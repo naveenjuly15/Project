@@ -1,0 +1,26 @@
+<apex:page controller="Account_Example">
+    <apex:form >
+    	<apex:pageBlock title="Account and Contact">
+        	<apex:pageBlockButtons location="top">
+                <apex:commandButton value="Submit" action="{!save}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account" collapsible="false">
+                <apex:inputField value="{!acc.Name}" />
+                <apex:inputField value="{!acc.Industry}" />
+                <apex:inputField value="{!acc.phone}" />
+                <apex:inputField value="{!acc.Type}" />
+                <apex:inputField value="{!acc.rating}" />
+                <apex:inputField value="{!acc.ownership}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Contact" collapsible="false">
+                <apex:inputText value="{!con.LastName}" />
+                <apex:inputText value="{!con.FirstName}" />
+                <apex:inputText value="{!con.phone}" />
+                <apex:inputText value="{!con.leadSource}" />
+                <apex:inputField value="{!con.mobilephone}" />
+                <apex:inputField value="{!con.otherPhone}" />
+            </apex:pageBlockSection>
+          
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

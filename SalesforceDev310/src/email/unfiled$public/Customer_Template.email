@@ -1,0 +1,12 @@
+<h2> Dear Customer ,<br/> 
+
+Your Application is Submitted for Apporoval with the following details <br/>
+
+<font style="color:red">Account Name : {!Account.Name} <br/>
+Account Phone  : {! Account.Phone} <br/>
+
+Account Industry :{! Account.Industry} <br/><br/>
+</font>
+
+Thanks <br/>
+Sales Team

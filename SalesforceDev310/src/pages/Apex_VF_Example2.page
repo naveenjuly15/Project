@@ -1,0 +1,7 @@
+<apex:page controller="Employe_Data" action="{!call}">
+     Name : {! name} <br/><br/>
+     Salary:{!salary} <br/><br/>
+     Exp  :{!exp} <br/><br/>
+     City :{!city} <br/><br/>
+     Place :{!place}
+</apex:page>

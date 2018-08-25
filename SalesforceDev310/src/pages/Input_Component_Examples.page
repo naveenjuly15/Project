@@ -1,0 +1,55 @@
+<apex:page controller="Input_Example">
+   <apex:form >
+   	   <apex:pageBlock title="InputComponents">
+           Enter Name : <apex:inputText /> <br/><br/>
+           InputHidden: <apex:inputHidden /> <br/><br/>
+           InputSecret: <apex:inputSecret /> <br/><br/>
+           InputTextArea:<apex:inputTextArea rows="3" cols="40"/> <br/><br/>
+           InputCheckbox: <apex:inputCheckbox /> <br/><br/>
+       </apex:pageBlock> 
+       <apex:pageBlock title="Picklist" id="p1">
+       		Cities : 
+            <apex:selectList size="1" value="{!selected1}">
+                <apex:selectOption itemLabel="-None-" itemValue="none" />
+                <apex:selectOption itemLabel="Hyd" itemValue="TG" />
+                <apex:selectOption itemLabel="Ban" itemValue="KA" />
+                <apex:selectOption itemLabel="Che" itemValue="TN" />
+            </apex:selectList>
+           <apex:commandButton value="Submit"  action="{!show}" reRender="p1" /> <br/><br/>
+           Your have selected : {!selected1}
+       </apex:pageBlock>
+       <apex:pageBlock title="Multi-Select-Picklist" id="p2">
+       		Cities : 
+            <apex:selectList multiselect="true" value="{!options1}">
+                <apex:selectOption itemLabel="-None-" itemValue="none" />
+                <apex:selectOption itemLabel="Hyd" itemValue="TG" />
+                <apex:selectOption itemLabel="Ban" itemValue="KA" />
+                <apex:selectOption itemLabel="Che" itemValue="TN" />
+            </apex:selectList>
+           <apex:commandButton value="Submit" action="{!show}"   reRender="p2" /> <br/><br/>
+           Your have selected : {!options1}
+       </apex:pageBlock>
+       <apex:pageBlock title="Radio Buttons" id="p3">
+       		Cities : 
+            <apex:selectRadio value="{!selected2}">
+                <apex:selectOption itemLabel="-None-" itemValue="none" />
+                <apex:selectOption itemLabel="Hyd" itemValue="TG" />
+                <apex:selectOption itemLabel="Ban" itemValue="KA" />
+                <apex:selectOption itemLabel="Che" itemValue="TN" />
+            </apex:selectRadio>
+           <apex:commandButton value="Submit" action="{!show}"   reRender="p3" /> <br/><br/>
+           Your have selected : {!selected2}
+       </apex:pageBlock>
+       <apex:pageBlock title="Picklist" id="p4">
+       		Cities : 
+            <apex:selectCheckboxes value="{!options2}">
+                <apex:selectOption itemLabel="-None-" itemValue="none" />
+                <apex:selectOption itemLabel="Hyd" itemValue="TG" />
+                <apex:selectOption itemLabel="Ban" itemValue="KA" />
+                <apex:selectOption itemLabel="Che" itemValue="TN" />
+            </apex:selectCheckboxes>
+           <apex:commandButton value="Submit" action="{!show}"  reRender="p4" /> <br/><br/>
+           Your have selected : {!options2}
+       </apex:pageBlock>
+   </apex:form>
+</apex:page>

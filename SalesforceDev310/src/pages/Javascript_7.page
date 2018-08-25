@@ -1,0 +1,35 @@
+<apex:page id="page">
+     <apex:form id="fm">
+    	<apex:pageBlock title="Example" id="pb">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Calculate" oncomplete="call()" />
+            </apex:pageBlockButtons>
+           
+        	<apex:pageBlockSection id="pbs" columns="1">
+                 <script>
+            	function call(){
+                	var aval=document.getElementById('{!$Component.pbsi1.aval}').value;
+                    console.log(aval);
+                    var bval=document.getElementById('{!$Component.pbsi2.bval}').value;
+                     console.log(bval);
+                    var cval=parseInt(aval)+parseInt(bval);
+                     console.log(cval);
+                    document.getElementById('{!$Component.pbsi3.cval}').value=cval;
+                }
+            </script>
+            	<apex:pageBlockSectionItem id="pbsi1">
+                    <apex:outputLabel value="Enter Aval" />
+                    <apex:inputText id="aval" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbsi2">
+                    <apex:outputLabel value="Enter Bval" />
+                    <apex:inputText id="bval" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbsi3">
+                    <apex:outputLabel value="Result" />
+                    <apex:inputText id="cval" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

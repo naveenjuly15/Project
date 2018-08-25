@@ -1,0 +1,19 @@
+<apex:page id="page">
+    <script>
+    	function show(){
+        	var name=document.getElementById('page:fm:pb:name').value;
+            alert(name);
+        }
+    	function call(){
+        	var age =document.getElementById('page:fm:pb:age').value;
+            alert(age);
+        }
+    </script>
+    <apex:form id="fm">
+    <apex:pageBlock title="Example" id="pb">
+    Enter Name:<apex:inputText id="name" onchange="show()"/>             
+        
+ Enter Age :<apex:inputText id="age" onchange="call()" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

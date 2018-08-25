@@ -1,0 +1,10 @@
+Dear Customer ,
+
+Your Application is Submitted for Approval with the following details:
+
+Account Name : {!Account.Name}
+Account Phone : {! Account.Phone}
+Account Industry :{! Account.Industry}
+
+Thanks
+Sales Team

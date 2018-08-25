@@ -1,0 +1,5 @@
+<apex:page >
+    <c:capital empName="Satish Myla" color="red" />
+    <c:capital empName="Satish " color="green" />
+    <c:capital empName="Mandava Kiran" color="blue" />
+</apex:page>

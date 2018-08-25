@@ -1,0 +1,231 @@
+<apex:page >
+   <!--
+    Collections : 
+    1. Size of can grow or decrease based on run time requirement.
+    2. We will have some pre-defined methods to support operations on the collection.
+    3. There are three types of collections 
+    	 a. List 
+    	 b. Set 
+    	 c. Map
+    
+    List : 
+    ------
+    1. List is a collection of simillar elements .
+    2. Size can grow and decrease as per run time business reqirement.
+    3. List will maintain insertion order .
+    4. Duplicate values are allowed in the list .
+    5. Elements in the  list are reffered using index.
+    6. Index value starts with zero.
+    7. In the salesforce we have pre-defined apex class list to support the collections.
+    8. Syntax : List<DataType> listName
+	   Example : 
+	   List<Integer> ages ;
+	   List<String> names ;
+	   List<Account> accounts;
+	   List<Contact> contacts;
+	   List<Employee> employees;
+	   List<List<Account>> accounts;
+	   List<Set<Account>> accs;
+	   List<Customer__c> customers;
+
+	9. Constructor : 
+		List<DataType>()
+		List<DataType>(List)
+		List<DataType>(Set)
+
+    10. How to create a instance of a\\\\\\\\List<DataType> listName =new List<DataType>();
+		 Example 1: Create a list of integer and add the values .
+		 List<Integer> ages =new List<Integer>{10,20,30,40};
+		 List<String>  names =new List<Integer>{'Sam','Ram','Kiran'};
+			
+	11. Methods : 
+		We have some pre-defined methods to support operations on the list .
+		a.size() : This will return no of elements in the list .
+		  		 : Syntax : Integer size()
+				 Example : 
+				 List<Integer> ages =new List<Integer>{10,20,30,40};
+				 Integer count =ages.size();
+				 System.debug(count); // 4
+
+		b.clear(): This will remove all the elements from the list .
+
+				Example : 
+				List<Integer> ages =new List<Integer>{10,20,30,40};
+				System.debug(ages); // {10,20,30,40}
+				ages.clear();
+				System.debug(ages); //{}
+		
+		c.isEmpty(): This will return true if the size of the list is zero
+				   : This will return false if the size of the list is not zero			
+				Example : 
+				List<Integer> ages =new List<Integer>();
+				Boolean flag =ages.isEmpty();
+				System.debug(flag); // true
+		
+		d. getSObjectType(): 
+				1. If the datatype of the list is sobject then we find which sobject 
+				   is used in the list by using getSobjectType .
+				
+				Example : 
+				List<Account> accounts =new List<Account>();
+				Schema.SobjectType obj=accounts.getSobjectType();
+				System.debug(obj); // Account
+
+		e. indexOf(listElement) :
+			1. This will return the index of the first occurence of the given element in the list
+			Example : 
+			List<Integer> ages =new List<Integer>{10,20,30,20,40};
+			Integer index =ages.indexOf(20);
+			System.debug(index); // 1 
+			Integer position =ages.indexOf(40);
+			System.debug(position); // 4
+			
+		f. hashCode() : 
+			1. This will reutrn the hashcode of the object.
+			
+			Example : 
+			List<Integer> ages =new List<Integer>();
+			System.debug(ages.hashcode());
+
+		g. add(ele)  : 
+			1. This method is used to add new element to the list .
+			2. new element is added at the last position.
+			
+			Example : 
+			List<Integer> ages =new List<Integer>();
+			ages.add(10);
+			ages.add(20);
+			System.debug(ages); // {10,20}
+			ages.add(30);
+			Integer a=40;
+			ages.add(a);
+			Integer b=50;
+			ages.add(b);
+			System.debug(ages); // {10,20,30,40,50}
+			   0	1     2     3     4 
+			--------------------------------
+			| 10  | 20  | 30  | 40  | 50   |
+			--------------------------------
+
+		h.add(index,ele) :
+			1. This method will add new element at the given index.
+			2. index can not be more than the size-1 
+			Example : 
+			List<Integer> ages =new List<Integer>();
+			ages.add(10);
+			ages.add(20);
+			Integer a=30;
+			ages.add(a);
+			ages.add(30);
+			System.debug(ages);// {10,20,30,30}
+			   0	  1      2      3		
+			------------------------------
+			|  10   | 20  |  30  |  30  |
+			------------------------------
+			ages.add(1,90);
+			System.debug(ages); // {10,90,20,30,30}
+			
+			   0	  1      2      3		4	
+			-----------------------------------
+			|  10   | 90	|20  |  30  |  30  |
+			------------------------------------
+			
+			ages.add(3,80); 
+			System.debug(ages); // {10,90,20,80,30,30}
+		
+			   0	  1      2      3		4	
+			----------------------------------------
+			|  10   | 90	|20  | 80  | 30  |  30  |
+			-----------------------------------------
+
+		i. addAll(set/list) :
+			1. This method is used to add list of elements to list .
+			2. This method is used to add set of elemets to a list.
+		
+			Example : 
+			List<Integer> ages =new List<Integer>();
+			ages.add(10);
+			ages.add(20);
+			System.debug(ages);//{10,20}
+			
+			List<Integer> myValues =new List<Integer>{10,90,80,10};
+			ages.addAll(myValues);
+			System.debug(ages);
+
+			ages :
+				  0		 1	  2		3	 4	   5
+				-----------------------------------
+				| 10  | 20  | 10  | 90 | 80  | 10 |
+				-----------------------------------
+
+		j. contains(element) :
+			1. This will check weather the given element is in the list or not 
+			2. If it is in the list, it will return true 
+			3. If it is not in the list ,it will return false.
+
+			List<Integer> ages =new List<Integer>{10,20,30};
+			Boolean b=ages.contains(10);
+			System.debug(b); // true
+			Boolean c=ages.contains(90);
+			System.debug(c); // false
+
+		k. get(index) : 
+			1.This will return the element which is at given index.
+			Example  :
+			List<Integer> ages =new List<Integer>{10,20,30,40};
+			  0     1      2     3	
+			------------------------
+			| 10  | 20  |  30  | 40 |
+			-------------------------
+
+			Integer a =ages.get(2);
+			System.debug(a); // 30
+
+			Integer b =ages.get(1);
+			System.debug(b); // 20
+
+		l. remove(index) : 
+			1.This method will remove the element which is at given index .
+			Example : 
+			List<Integer> ages =new List<Integer>{10,20,30,40};
+			  0      1     2     3
+			--------------------------
+			| 10  |  20  | 30  | 40  |
+			-------------------------
+			ages.remove(1);
+			
+			  0      1      2     
+			---------------------
+			| 10  |   30  | 40  |
+			---------------------
+			
+			ages.remove(2);
+			  0      1      
+			---------------
+			| 10  |   30  | 
+			---------------
+			
+		m. sort(): 
+			1. This will sort the elements in the list ascending order.
+
+			List<Integer> ages =new List<Integer>{10,90,40,70};
+			ages.sort();
+			System.debug(ages); // 10,40,70,90
+
+		n. set(index ,element): 
+			1. This method will replace the value at the given index
+
+			Example : 
+			List<Integer> ages =new List<Integer>{10,20,30};
+				0	   1     2 
+			------------------------
+			|   10  | 20   | 30  |
+			----------------------
+			ages.set(1,90);
+
+				0	   1     2 
+			------------------------
+			|   10  | 90   | 30  |
+			----------------------
+    -->
+</apex:page>

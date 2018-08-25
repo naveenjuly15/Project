@@ -1,0 +1,7 @@
+<apex:page controller="Product_Info" action="{!calculate}">
+    Name : {!prodName} <br/><br/>
+    Price:{!price} <br/><br/>
+    Quantity:{!quantity} <br/><br/>
+    Total :{!total} <br/><br/>
+    Discount:{!discount}
+</apex:page>

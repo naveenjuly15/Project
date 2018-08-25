@@ -1,0 +1,16 @@
+<apex:page controller="View_State_Example">
+    <apex:form >
+        <apex:pageBlock title="Accounts">
+            <apex:pageBlockTable value="{!accs}" var="a">
+                <apex:column value="{!a.name}" />
+                <apex:column value="{!a.phone}" />
+            </apex:pageBlockTable>
+            <apex:pageBlockTable value="{!accounts}" var="b">
+                <apex:column value="{!b.name}" />
+                <apex:column value="{!b.phone}" />
+            </apex:pageBlockTable>
+            <apex:inputFile fileName="test" value="{!body}"></apex:inputFile>
+            <apex:commandButton value="Submit" action="{!call}" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

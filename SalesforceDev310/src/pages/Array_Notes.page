@@ -1,0 +1,197 @@
+<apex:page >
+ Array :
+ 1. Array is a collection of simillar elements .
+ 2. Memory for the elements in the array are allocated sequentially.
+ 3. Elements in the array are reffered using index.
+ 4. Index value starts with zero.
+ 5. Syntax : 
+    DataType[] arrayName =new DataType[size];
+ 6. DataType can be Primitive ,sobject, collection or Apex classes
+    
+    Example :1  
+    Integer[] ages =new Integer[3];
+    |		  |			        |----Size 
+    DataType  Refference Variables 	
+    	 0		   1		 2
+    ---------------------------------
+    |    null  |   null   |   null  |
+    ---------------------------------
+    
+    Example :2 
+    
+    String[] names =new String[4];
+        0		1		 2		 3
+    -----------------------------------
+    |  null  |  null  |  null | null  |
+    -----------------------------------
+    
+    Example :3 
+    
+    Account[] accounts  =new  Account[4];
+       0		 1		 2        3
+    ------------------------------------
+    |  null  |  null  |  null   | null  |
+    -------------------------------------
+    
+   7. How to assign the values statically ?
+    
+     Static Allocation of Values: 
+     -----------------------------
+     At the time of creating the array if you assign the values then it is  called static allocation.
+    
+     Example :
+     Integer[]  ages  =new  Integer[4]{10,20,30,40};
+    	 0       1      2     3 
+      -------------------------------
+      |  10   |  20   | 30  |  40  |
+      ------------------------------
+    
+     Example :2 
+     String[]  names =new String[]{'Sam','Ram','Kiran'};
+         0      1      2 
+      --------------------------
+      |  Sam  | Ram  | Kiran   |
+      --------------------------
+    
+    8. Dynamic Allocation : 
+    	Assigning the values at the run time of the program is called dynamic allocation .
+        Example :1 
+    	Integer[] ages = new Integer[4];
+    	ages[0]=10;
+    	ages[2]=90;
+    	ages[3]=120;
+    	   0	 1       2     3 
+    	---------------------------
+    	| 10   | null|  90  | 120 |
+    	---------------------------
+    
+    	Example  : 2 
+    	String[] names  =new String[4];
+    	names[0]='Sam';
+    	names[1]='Kiran';
+    	names[2]='Hari';
+    	names[3]='Prasad';
+           0       1        2        3
+    	-------------------------------------
+    	| Sam   | Kiran  | Hari   | Prasad  |
+    	-------------------------------------
+        
+    	Example :3 
+    	Integer[] ages ;
+    	System.debug(ages); // ages is null
+    	ages =new Integer[4];
+    	ages[1]=90;
+    	ages[2]=ages[1]+10;
+    	ages[3]=40;
+    	   0	     1         2	 3
+    	------------------------------------
+    	| null   |   90    |  100 |  40   |
+    	-----------------------------------
+    
+    	Example : 4 
+    	Integer[] ages  =new Integer[]{10,20,30,40};
+    	Integer[] myvalues =ages;
+    
+    9. Array of Sobjects 
+    	
+        Example : 1 
+    	a. Create array of Accounts
+    	Account[] accounts  =new Account[4];
+    
+    	Account a1 =new Account();
+    	a1.Name='Wipro';
+    	a1.Industry='Banking';
+    	accounts[0]=a1;
+    
+    	Account a2 =new Account();
+    	a2.Name='TCS';
+    	a2.Industry='Energy';
+    	accounts[1]=a2;
+    	
+    	accounts[2] =new Account();
+    	accounts[2].Name='Dell';
+    	accounts[2].Industry='Energy';
+    		0						1					2					    3
+    	-------------------------------------------------------------------------------
+    	| { 					| { 				|  { 					|		   |
+    	|  Name	    : Wipro 	|  Name    : TCS 	|	Name  : Dell		|   null   |
+     	|  Industry : Banking	|  Industry: Energy |	Industry : Energy	|          |
+    	| }						| }					|	}					|		   |
+    	--------------------------------------------------------------------------------
+    
+    Example :
+    1. Create a array to store citynames  and add five city names 
+    	String[] cityNames =new  String[5];
+    	cityNames[0]='Hyd';
+    	cityNames[1]='Ban';
+    2. Create a array to store marks and add 4 marks 
+    	Integer[] marks=new Integer[4]{10,20,30,40};
+    3. Create a array to store company names 
+    	String[] names =new String[4];
+    	names[0]='Wipro';
+    	names[1]='TCS';
+    4. Create a array to store salaries 
+    	Decimal[] salaries =new Decimal[4];
+    
+    5. Create a array to store phone number .
+    	String[] phones =new String[4];
+    
+   10. How to reffer to one by one element in the array ,
+    	
+    	Integer[] ages =new Integer[]{10,20,30,40};
+    	  0     1      2     3 
+    	--------------------------
+    	| 10  | 20  |  30  | 40  |
+    	--------------------------
+    	
+    	<!--
+			for(Integer i=0; i<ages.size(); i++){
+    			System.debug(ages[i]);  //   ages[0]  =10   //ages[1] 20 
+    		}
+    	-->
+    	Example : Create a array of salaries and print the sum of the all the salaries .
+    	Decimal[] salaries =new Decimal[]{1000,200,40000};
+    	Decimal sum=0;
+    	<!--
+    		for(Integer i=0; i <= salaries.size() ;i++ ){
+            	sum=sum+salaries[i];                                     
+         	}
+		-->
+    11. Sort the given elements in ascending order 
+    		   0	   1     2      3
+    		--------------------------------
+    		|  20  |   15  | 30     |  10  |
+    		-------------------------------
+    	<!--
+				Integer small=0; // assuming that smallest element is at index -0
+				for(Integer i=1; i< ages.size() ;i++ ){
+						if(ages[i] < ages [small]){
+							small=i;
+						}
+				}
+				i=1, small=0 
+				ages[1] < ages[0]: true : small=i; small=1;
+					
+				i=2 ,small=1
+				ages[2] < ages[1]  :false 
+
+				i=3 ,small=1
+				ages[3] < ages [1]  : true ,small=i; small=3			x=10 y=20
+
+				Integer temp =ages[0];			Integer temp =x;	   // temp=10
+				ages[0]=ages[small];			x=y;				   // x=20
+				ages[small]=temp;				y=temp;	
+
+			 for(Integer i=0;i<ages.size()-1; i++){
+					integer small=i;
+					for(Integer j=i;j<ages.size();i++){
+						 if(ages[j] < ages[small]){
+							 small=j;
+						 }
+					}
+					Integer temp =ages[small];
+					ages[small]=ages[i];
+					ages[i]=temp;
+			 }
+		-->
+</apex:page>

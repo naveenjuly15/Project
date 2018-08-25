@@ -1,0 +1,11 @@
+<apex:page >
+    1. Create a new Contact for the account whose name is Genepoint
+        Account acc =[select id ,name from Account where name='Genepoint'];
+        Contact con=new Contact();
+        con.LastName='Myla';
+        con.FirstName='Satish';
+        con.Phone='040-12345';
+        con.AccountId=acc.Id;
+        insert con;
+        
+</apex:page>

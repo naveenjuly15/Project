@@ -1,0 +1,42 @@
+<apex:page standardController="Account">
+    Apex:InputField : 
+    1. If you want to reffer to exact properties of a field that is defined in the object 
+    then we use Inputfield <br/>
+    2. If you want to reffer to the properties of an object in the VF page then 
+       define that object as standardContoller <br/>
+       Example : standardController="Account" 
+    		   : StandardController="Customer__c" 
+    3. We can only define one sobject as a standardController<br/>
+    
+    4. We can reffer to the fields of the standardController <br/>
+    	<!-- {!ObjectName.FieldName} 
+    	Example 	  Object		Field
+    				  Standard		Standard		{!ObjectName.FieldName}
+    				  Standard		Custom 			{!objectName.FieldName__c}
+    				  Custom		Standard		{!ObjectName__c.FieldName}
+    				  Custom		Custom			{!ObjectName__C.FieldName__C}
+		 --><br/>
+    
+    5. if you are reffering to the standard lookup fields then we need to add "id" after fieldName
+    	<!--
+				FieldName : Owner 
+				{! Account.OwnerId}
+		--><br/>
+    6. If you are reffering to the custom lookup field then we can reffer using fieldName 
+    		<!--
+				FieldName : Customer__C 
+				{! Account.Customer__c}
+			--><br/>
+    <apex:form >
+    	<apex:pageBlock title="Account">
+        	<apex:pageBlockSection title="AccountInfo" collapsible="false">
+                <apex:inputField value="{!Account.Name}" />
+                <apex:inputField value="{!Account.Industry}" />
+                <apex:inputField value="{!Account.Phone}" />
+                <apex:inputField value="{!Account.OwnerId}" />
+                <apex:inputField value="{!Account.CustomerPriority__c}" />
+                <apex:inputField value="{!Account.Active__c}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

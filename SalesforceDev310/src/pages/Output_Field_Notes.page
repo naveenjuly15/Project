@@ -1,0 +1,30 @@
+<!--
+Apex:outputField: 
+1. This component is used to display the data from the given standardController 
+2. This will respect the properties of the given field
+3. This will support Apex:inlineEditSupport 
+
+Apex:InlineEditSupport t: 
+1. What ever the outputField we have define in between these components their
+values can be modified by clickong on the field
+
+-->
+
+<apex:page standardController="Account">
+    <apex:sectionHeader title="{!Account.Name}" subTitle="Edit" />
+    <apex:form >
+        <apex:pageBlock title="{!Account.Name}" >
+            <apex:inlineEditSupport >
+            <apex:pageBlockSection columns="1" >
+                <apex:outputField value="{!Account.Name}" />
+                <apex:outputText value="{!account.name}"/>
+                <apex:outputField value="{!Account.Phone}" />
+                <apex:outputField value="{!Account.Industry}" />
+                <apex:outputField value="{!Account.rating}" />
+                <apex:outputField value="{!Account.Ownership}" />
+                <apex:outputField value="{!Account.AnnualRevenue}" />
+            </apex:pageBlockSection>
+            </apex:inlineEditSupport>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,28 @@
+<apex:page >
+    1. When ever a new Opportunity is created with  stageName as prospect then create 
+       student as Opportunity teamMember.
+    	OpportunityId,OpportunityAccessLevel,UserId,TeamMemberRole
+    	trigger example on opportunity (after insert){
+    		<!--
+			User u =[select id from User where alias='Slive'];
+    		List<OpportunityTeamMember> teams =new List<OpportunityTeamMember>();
+			for(Opportunity opt: Trigger.new){
+				if( opt.StageName=='Prospecting'){
+                    OpportunityTeamMember otm=new OpportunityTeamMember();
+                    otm.opportunityId=opt.Id;
+                    otm.UserId=u.Id;
+                    otm.TeamMemberRole='Account Manager';
+                    otm.OpportuityAccessLevel='Account Manager';
+                    teams.add(otm);
+				}
+			}
+			insert teams;
+    	}
+    
+    2. When ever a new Lead is Created with Industry as Education ,Create a task for the lead.
+    		Subject, OwnerId,Priority,ActivityDate, WhatId, status
+    	
+    3.When ever owner of the opportunity is modified ,send email to old owner and new owner 
+		with message  Opportunity is re-assigned from user 1 to user2
+-->
+</apex:page>

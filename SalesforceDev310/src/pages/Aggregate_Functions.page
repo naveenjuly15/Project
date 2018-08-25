@@ -1,0 +1,49 @@
+<apex:page >
+      Count() :  
+    1. This will return count of no of records returned by the soql
+    
+    Example : 
+    Integer count =[select count() from Account where industry='Energy'];
+    
+    All Aggregate functions are goint to return the result in the form of AggregateResult.
+    2. Count(field) : 
+    	This will return count of no of records whose value is not null for the given field.
+    
+    3. sum(field) : 
+    	This will return summarized value of given field from the queryResult
+    	AggregateResult result=[select sum(amount) from Opportunity where stageName='Closed Won'];
+    
+    4. Max(Field) : This will return maximum value of given field
+    
+    5. MIN(Field) : This will return minimum value of given field
+    
+    6. AVG (Field) :This will return Average value of given field.
+    
+    Example :
+    AggregateResult result= [select Count(Name)myCount,SUM(Amount)total,MAX(Amount)maxval,MIN(Amount)minval from Opportunity];
+	Integer count=(Integer)result.get('myCount');
+	Decimal total=(Decimal)result.get('total');
+	Decimal minval=(Decimal)result.get('minval');
+	Decimal maxval=(Decimal)result.get('Maxval');
+	System.debug('Count :'+count);
+	System.debug('MaxVal :'+maxval);
+	System.debug('Minval'+minval);
+	System.debug('Total:'+total);
+    <!--
+    ==> AggregateFunctions with Group By :
+    List<AggregateResult> myList =[select StageName,sum(amount)total,Min(Amount)minval,Max(Amount)maxval from Opportunity group by StageName];
+
+	for(AggregateResult result :myList){
+    	String stage=(String)result.get('stageName');
+    	Decimal amount=(Decimal)result.get('total');
+    	Decimal minval=(Decimal)result.get('minval');
+    	Decimal maxval=(Decimal)result.get('maxval');
+    	System.debug('======Group By :'+stage);
+    	System.debug('Amount :'+amount);
+    	System.debug('MinVal:'+minval);
+    	System.debug('Maxval:'+maxval);   
+	}
+	-->
+    Note :  When we are using Group By clause : Fields which we are querying should be a part of group by clause 
+    		or should be a part of Aggregate functions
+</apex:page>

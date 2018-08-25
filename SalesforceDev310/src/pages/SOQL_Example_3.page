@@ -1,0 +1,10 @@
+<apex:page controller="SOQL_Example_3">
+    <apex:pageBlock title="Cases">
+    	<apex:pageBlockTable value="{!cases}" var="a">
+            <apex:column value="{!a.subject}" />
+            <apex:column value="{!a.priority}" />
+            <apex:column value="{!a.origin}" />
+            <apex:column value="{!a.status}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

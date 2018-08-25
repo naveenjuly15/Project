@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <choices>
+        <name>Ban</name>
+        <choiceText>Ban</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Ban</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Hyd</name>
+        <choiceText>Hyd</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Hyd</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>None</name>
+        <choiceText>-None-</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>none</stringValue>
+        </value>
+    </choices>
+    <interviewLabel>Flow_Example_1 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Flow_Example_1</label>
+    <processType>Flow</processType>
+    <screens>
+        <name>FirstPage</name>
+        <label>FirstPage</label>
+        <locationX>40</locationX>
+        <locationY>57</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Second_Screen</targetReference>
+        </connector>
+        <fields>
+            <name>Enter_Name</name>
+            <dataType>String</dataType>
+            <fieldText>Enter Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Fourth_Screen</name>
+        <label>Fourth _Screen</label>
+        <locationX>493</locationX>
+        <locationY>64</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Result</name>
+            <fieldText>Name  : {!Enter_Name}
+
+Salary :{!Enter_Salary}
+
+Cities :{!City}</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <screens>
+        <name>Second_Screen</name>
+        <label>Second_Screen</label>
+        <locationX>194</locationX>
+        <locationY>62</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Third_Screen</targetReference>
+        </connector>
+        <fields>
+            <name>Enter_Salary</name>
+            <dataType>Currency</dataType>
+            <fieldText>Enter Salary</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+    </screens>
+    <screens>
+        <name>Third_Screen</name>
+        <label>Third Screen</label>
+        <locationX>338</locationX>
+        <locationY>66</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Fourth_Screen</targetReference>
+        </connector>
+        <fields>
+            <name>City</name>
+            <choiceReferences>None</choiceReferences>
+            <choiceReferences>Hyd</choiceReferences>
+            <choiceReferences>Ban</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>City</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <startElementReference>FirstPage</startElementReference>
+</Flow>

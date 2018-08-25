@@ -1,0 +1,53 @@
+<apex:page >
+    <!--
+		CALENDAR_MONTH() : 
+		1. This will return month the given date (1-12)
+		
+		Example : Fetch all the leads which are created in the month of march
+
+		List<Lead> leads =[select id,lastname,firstname ,phone from Lead where CALENDAR_MONTH(CreatedDate) =3]
+
+		CALENDAR_QUARTER() : 
+		1. This will return the quater (1-4) 
+		Example : Fetch all the opportunities which are closed in the first quater 
+		
+		List<Opportunity> optyList =[select id,Name,stagename from Opportunity where CALENDAR_QUARTER(CloseDate)=1];
+
+		CALENDAR_YEAR() : This will return year in the date 
+
+		DAY_IN_MONTH() : This will return day in the month(1-31)
+		Example : 
+		Fetch all the contacts created on 20th of every month
+		List<Contact> contacts =[select id,LastName,FirstName,Phone from Contact where DAY_IN_MONTH(CreatedDate)=20];
+
+		DAY_IN_WEEK() : This will return day in the week (1-7 :1 SUNDAY  7: SAT)
+		List<Opportunity> opty=[select id,name from Opportunity where DAY_IN_WEEK(CreatedDate)=6];
+
+
+		Example : Fetch all the Opportunties  which are created on 3rd friday at 5:AM  in second quarter 
+
+		List<Opportunity> optyList =[select Id,name,stagename from Opportunity where FISCAL_QUARTER(CreateDate)=2 
+														AND WEEK_IN_MONTH(CreateDate) =3 and 
+														DAY_IN_WEEK(createDate)=6 and HOUR_IN_DAY(CreatedDate)=5];
+
+
+		DAY_IN_YEAR()  :Return value fo (1-365)
+	
+		DAY_ONLY() : This will convert date time to date
+
+		FISCAL_MONTH()
+		FISCAL_QUARTER()
+		FISCAL_YEAR()
+		HOUR_IN_DAY()
+		WEEK_IN_MONTH()
+		WEEK_IN_YEAR()
+
+	1. Write a query to fetch all the opportunties which are going to closed in third week  april.
+			List<Opportunity> optyList =[select Name,stagename from Opportunity where CALENDAR_MONTH(CloseDate)=4 and 
+																				WEEK_IN_MONTH(CloseDate)=3]
+
+	2. Write a query to fectch all the opportunities which are going to closed on third monday in second quater 
+
+	
+	-->
+</apex:page>

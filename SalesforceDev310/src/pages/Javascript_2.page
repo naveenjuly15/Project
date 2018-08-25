@@ -1,0 +1,18 @@
+<apex:page >
+    <script>
+    	function callMe(){
+        	alert('This is method call');
+        }
+    	function invoke(){
+        	alert('This is invoke script');
+        }
+    	function show(name,age){
+        	alert(name);
+            alert(age);
+        }
+    	function demo(aval,bval){
+        	var cval=aval+bval;
+            alert(cval);
+        }
+    </script>
+</apex:page>

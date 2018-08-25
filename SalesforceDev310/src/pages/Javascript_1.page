@@ -1,0 +1,11 @@
+<apex:page >
+    <script>
+        var name='Satish';
+        var age=33;
+        var city='Hyd';
+        console.log('Name:'+name);
+        console.log('City:'+city);
+        console.log('Age :'+age);
+        alert('This is a test message');       
+    </script>
+</apex:page>

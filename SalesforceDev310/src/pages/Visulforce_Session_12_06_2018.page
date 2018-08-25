@@ -1,0 +1,112 @@
+<apex:page >
+   1. In how many ways we can create VF pages ??
+          a.  Standard Navigation 
+    
+    	  b.  Using URL 
+    
+    	  c.  Developer Console 
+    
+    	  d.  Eclipse 
+    
+    2. How to create VF page using Standard Navigation ??
+        a. Salesforce classic Navigation 
+    		Setup
+    		|---> Build 
+    		  	  |---> Develop
+    			    	|---> Visualforce Pages 
+    					  	  |--->New 
+    
+    		Step 1: Enter Page Name and Label
+    	
+    		Step 2: Write body of the page 
+    
+    		Step 3: Save 
+    
+    		Test It : By clicking on Preview Button
+    
+    	b. Salesforce Lightning 
+    
+    		Setup
+    		|---> Custom Code 
+    			  |---> Visualforce Page 
+    					|---> New 
+    
+    		Step 1: Enter Page Name and Label
+    	
+    		Step 2: Write body of the page 
+    
+    		Step 3: Save 
+    
+    		Test It : By clicking on Preview Button
+    	
+    	Note : If you want to open any VF page url of the page will be 
+    	https://instanceofserver.salesforce.com/apex/PageName
+    
+    3. How to create a VF page using URL ??
+    
+    	Step 1: Enable Development Mode 
+    			 
+    			a. Classic 
+    				Setup
+    				|---> Adminster
+    				      |---> Manage users 
+    							|--->Users 
+    								 |---> Choose the User
+    										|--->Enabel Development Mode 
+    
+    			b. Lighting 
+    				Setup
+    				|--->Adminstration
+    					 |--->Users
+    						  |---> Choose the users 
+    								|---> Enable Development Mode 
+    
+    	Step 2: Specify the url in the browser 
+    		    https://ap5.salesforce.com/apex/pageName
+    		     if the page exists then it will open  else it show you the link
+    				   to create the page 
+    
+    	Note : If you want to modify the code from the page itself then we use it
+    
+    4. Developer Conole 
+       	a.Classic  : 
+       		UserName 
+        	|--->Developer Console
+    		 	 |---> File 
+    			   	   |--->New 
+    				    	|--->Visualforce page 
+    						 	 |--->Enter the Name 
+    							  	   |--->Write the code 
+    								   		|--->Save it (Ctrl+s) 
+    
+    		Test It : click on Preview button
+    
+    	b.Lightning :
+    		Setup
+    		 |--->Developer Console
+    		 	  |---> File 
+    			   	    |--->New 
+    				    	 |--->Visualforce page 
+    						 	  |--->Enter the Name 
+    							  	   |--->Write the code 
+    								   		|--->Save it (Ctrl+s) 
+    	
+    Components: 
+    	
+    	1. Components are the building blocks of the Page .
+    	2. They are re-usable entities 
+    	3. Components are classified into two formats
+    			a. StandardComponents
+    			b. Custom Components 
+    	4. Standard Component : 
+    		 a. These defined by salesforce on the force.com platform
+    		 b. Standad Components generally have the namespace of 
+    			 apex,flow,chatter,community,analytics....
+    
+    	5. Custom Components: 
+    		a. These are created by the user as per his application needs 
+    		b. These components will have namespace as "c" 
+    		    or the namespace given to the organization 
+    			c:componentName 
+    			namespace:componentName
+</apex:page>

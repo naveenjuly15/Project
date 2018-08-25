@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Student</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Students</value>
+    </caseValues>
+    <fields>
+        <label><!-- City --></label>
+        <name>Hyd__c</name>
+        <picklistValues>
+            <masterLabel>Ban</masterLabel>
+            <translation><!-- Ban --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Che</masterLabel>
+            <translation><!-- Che --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hyd</masterLabel>
+            <translation><!-- Hyd --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>Phone__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

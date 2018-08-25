@@ -1,0 +1,40 @@
+<apex:page >
+    ProcessRequest :
+    --------------------------
+    1. It is  a pre-defined apex class.
+    2. This is defined under Approval namespace.
+    3. This is parent class for all the approval class .
+    4. Methods :
+    	setNextApproverIds(List) : This method will set the Id of the list of next approver.
+    	setComments(string) : This method will set the comments if any 
+    
+    ProcessSubmitRequest : 
+    -----------------------
+    1. It is a pre-defined apex class.
+    2. This is defined under approval namespace.
+    3. This is a child class of ProcessRequest class.
+    4. Methods : 
+    	setObjectId() : This will set the id of the record which need to be submited for approval
+    	setSubmitterId() : This will set the id of the submitter  who submits this record.
+    	setProcessDefinitionNameorId() : This will set the name of the approval process or 
+    									 id of the approval process to which you want to submit.
+    
+    5.setSkipEntryCriteria(skipEntryCriteria): If you set this as true,entry condition will be bypassed, 
+    
+    <!--
+	trigger Account_Submit on Account (after insert) {
+        for(Account a: Trigger.new){
+            if(a.type=='Prospect'){
+                Approval.ProcessSubmitRequest request =new Approval.ProcessSubmitRequest();
+                request.setObjectId(a.Id);
+                request.setProcessDefinitionNameOrId('CorporateApproval');
+                request.setSubmitterId(UserInfo.getUserId());
+                List<Id> userids= new List<Id>{a.Manager__c};
+                request.setNextApproverIds(userIds);
+                request.setComments('This is Dynamic Approval');
+                Approval.ProcessResult result = Approval.process(request);
+             }
+        }
+}
+	-->
+</apex:page>

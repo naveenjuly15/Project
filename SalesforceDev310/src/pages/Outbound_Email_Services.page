@@ -1,0 +1,24 @@
+<apex:page >
+    Messaging:
+    ------------
+    1.If you want send or receive the emails from the salesforce to external system 
+      we call it as email services 
+    2.There are two types of email services 
+    	a. Outbound Email Service 
+    	b. Inbound Email Service 
+    3. Outbound Email Service :
+    	a. Sending a email from salesforce to external system is called Outbound email service.
+    	b. There are two types of outbound email messages 
+    		1. SingleEmailMessage 
+    		2. MassEmailMessage
+    
+   	4. SingleEmailMessage : 
+    	a. This class has some pre-deifined methods to support the operation .
+    		1. toAddresses(string[]) 
+    		2. fromAddresses(string[])
+    		3. ccAddresses(string[])
+    		4. setSubject(string)
+    		5. setSenderDisplayName()
+    		6. SetPlainTextBody()
+    		7. SetHTMLBody()
+</apex:page>

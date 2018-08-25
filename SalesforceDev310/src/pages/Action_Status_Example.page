@@ -1,0 +1,6 @@
+<apex:page controller="Action_Pooler_Example">
+    <apex:form id="fm">
+        <apex:commandButton value="Submit" action="{!getData}" status="one" reRender="fm" />
+        <apex:actionStatus id="one" startText="Loading..."   />
+    </apex:form>
+</apex:page>

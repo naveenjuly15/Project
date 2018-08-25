@@ -1,0 +1,13 @@
+<apex:page controller="Action_Example_3">
+    <apex:form >
+        <apex:pageBlock title="Example">
+            Enter Name : <apex:inputText value="{!name}" /> <br/><br/>
+            <apex:actionRegion >
+                Enter City : <apex:inputText value="{!city}">
+                <apex:actionSupport event="onchange" action="{!call}" reRender="one" />
+                </apex:inputText><br/><br/>
+            </apex:actionRegion>
+            <apex:outputLabel value="{!result}" id="one" />            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,64 @@
+<apex:page >
+    Apex:pageBlockSection : 
+    1. It is a child component of pageBlock
+    2. This will break the body of the pageblock into number of segements 
+    3. It will divide row into no of columns 
+    4. In each column only one component can be displayed.
+    5. Once component means , once you open the component till it is closed it is called one component.
+        Example : 
+    <!--
+        <apex:page> </apex:page>
+    
+        <apex:pageBlock>
+             <apex:pageBlockButtons >
+             </apex:pageBlockButtons>
+        </apex:pageBlock>
+    -->
+    6. Attributes :
+        a. Title  : 
+            1. It is string value 
+            2. This will be displayed as title for the sectionHeader 
+    
+        b. collapsible : 
+            1. it is boolean value .
+            2. When set as true ,section title will be displayed with collapsible arrowicon.
+            3. When set as false ,section title will be displayed without collapsible arrow icon
+    
+        c. columns : 
+            1. It will take numerical value .
+            2. It will specify how many columns we should have for a row 
+            3. Default value is 2 
+        d. rendered  : 
+            1. It is a boolean value .
+            2. When set as true content will be displayed.
+            
+    <br/><br/>
+    <apex:pageBlock title="Employee">
+        <apex:pageBlockSection >
+            Qualification  
+            Year of Passout
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Education Details">
+            Qualification <br/><br/> 
+            Year of Passout
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Experience Details" collapsible="false">
+            Company Name :<br/><br/>
+            Salary       :
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Address" collapsible="false" columns="4">
+            <apex:pageBlock title="One">
+                Block one
+            </apex:pageBlock>
+            <apex:pageBlock title="Two">
+                Block Two
+            </apex:pageBlock>
+            <apex:pageBlock title="Three" mode="maindetail">
+                Block Three
+            </apex:pageBlock>
+            <apex:pageBlock title="Four" mode="edit">
+                Block Four
+            </apex:pageBlock>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

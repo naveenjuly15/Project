@@ -1,0 +1,14 @@
+<apex:page >
+    <apex:sectionHeader title="Employee" subtitle="New Employee" help="/apex/EmployeeHelp" />
+    <apex:form >
+    	<apex:pageBlock title="Registration Form" >
+        	<apex:pageBlockButtons location="top">
+                <apex:commandButton value="Save" />
+                <apex:commandButton value="Cancel" />
+            </apex:pageBlockButtons>
+            Employee Name  : <br/><br/>
+            Employee Age   : <br/><br/>
+            Employee Salary: 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

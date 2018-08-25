@@ -1,0 +1,30 @@
+<apex:page id="page">
+     <!-- If you include connection.js file ,then ajax toolkit is included in the VF page -->
+     <script src="/soap/ajax/43.0/connection.js" type="text/javascript">
+     </script>
+    <script>
+    	function show(){
+            sforce.connection.sessionId='{!GETSESSIONID()}';
+            var search=document.getElementById('page:fm:search').value;
+            var query="select id,name,rating from Account where industry=\'"+search+"\'";
+            // alert(query);
+            var queryResult =sforce.connection.query(query);
+            var records=queryResult.getArray('records'); 
+            //alert(records);
+            var accounts=[];	
+            for(var i=0;i<records.length;i++){
+            	var acc=new sforce.SObject('Account');
+                acc.Id=records[i].Id;
+                acc.Rating='Warm';
+                accounts[i]=acc;
+            }
+            var result=sforce.connection.update(accounts);
+            document.getElementById('page:fm:res').innerHTML=result;
+         }
+    </script>
+    <apex:form id="fm">
+        <apex:inputText id="search" />
+        <apex:commandButton value="Update" oncomplete="show()" />
+        <apex:outputLabel id="res" />
+    </apex:form>
+</apex:page>

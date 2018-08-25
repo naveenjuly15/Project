@@ -1,0 +1,20 @@
+<apex:page controller="PageReference_Example">
+    PageReference : 
+    1. It is a pre-defined apex class .
+    2. It is used to reffer to a page 
+    3. It can be a VF page /Any Page that can be accessed over the browser
+    VF page can be reffered using URL or Using page class 
+    PageReference(urlofpage)
+    PageReference p=new PageReference('/apex/Mypage')
+    <apex:form >
+    <apex:pageBlock title="Example">
+    	Student : <apex:selectList size="1" value="{!selected}">
+        					<apex:selectOption itemLabel="-none-" itemValue="None" />
+        					<apex:selectOption itemLabel="Student" itemvalue="Student" />
+        				    <apex:selectOption itemLabel="Employee" itemValue="Employee" />
+        		  </apex:selectList>  
+        <br/>
+        <apex:commandButton value="Submit" action="{!invoke}" />
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

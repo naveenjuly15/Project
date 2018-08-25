@@ -1,0 +1,9 @@
+<apex:page controller="Schema_Example_2">
+    <apex:form >
+    	<apex:pageBlock title="Account">
+        	<apex:pageBlockTable value="{!fieldNames}" var="a">
+                <apex:column value="{!a}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

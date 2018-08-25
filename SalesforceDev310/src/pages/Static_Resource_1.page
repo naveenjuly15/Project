@@ -1,0 +1,4 @@
+<apex:page >
+    <apex:image value="{!$Resource.First}" />
+    <apex:image value="{!URLFOR($Resource.Second,'MyFolder/Capital/Images/capialinfo.png')}" />
+</apex:page>

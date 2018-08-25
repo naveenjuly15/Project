@@ -1,0 +1,44 @@
+<!--
+If you want to display group of records in the VF page then we will use list view components 
+1. apex:pageBlockTable
+2. apex:dataTable
+3. apex:dataList
+4. apex:repeat 
+These components are used to display 1000 records at a time .
+
+==> If you want to fetch the list of the records from the given object 
+Step 1: Define That object as StandardController 
+Step 2: Fetch the list records based on the filter we have selected.
+Note : Every object will have listviewOptions : 
+	   Based on the option we have selected in the listviewoptions ,corresponding records are fetched.
+Step 3:Option what we have selected from the listview options is called filterId
+Step 4:Based on the filter what we have selected we will get list of records which are reffered as "recordSetVar"
+-->
+<apex:page standardController="Account" recordSetVar="items" readOnly="true">
+    <apex:pageBlock title="PageBlockTable">
+    	<apex:pageBlockTable value="{!items}" var="a">
+            <apex:column value="{!a.name}" />
+            <apex:column value="{!a.industry}" />
+            <apex:column value="{!a.phone}" />
+            <apex:column value="{!a.rating}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    <apex:pageBlock title="DataTable" >
+    	<apex:dataTable value="{!items}" var="a">
+            <apex:column value="{!a.name}" />
+            <apex:column value="{!a.industry}" />
+            <apex:column value="{!a.phone}"  />
+            <apex:column value="{!a.rating}"  />
+        </apex:dataTable>
+    </apex:pageBlock>
+    <apex:pageBlock title="DataList" >
+    	<apex:dataList value="{!items}" var="a">
+            {!a.name} ---{!a.phone}
+        </apex:dataList>
+    </apex:pageBlock>
+    <apex:pageBlock title="Repeat">
+    	<apex:repeat value="{!items}" var="a">
+        	{!a.name}
+        </apex:repeat>
+    </apex:pageBlock>
+</apex:page>

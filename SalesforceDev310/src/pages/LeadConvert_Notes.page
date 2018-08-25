@@ -1,0 +1,111 @@
+<apex:page >
+    Lead Convert :
+    -------------
+    1. When we convert the lead ,One Account ,Contact,Opportunity will be created.
+    2. Opportunity is optional.
+    3. LeadStatus : 
+       1. It is a standard object.
+       2. This will contain all the options given in the status field in the lead object
+       3. Fields : 
+    		MasterLabel : Label Name of the option
+    	    isCoverted  : This will return true ,if the status option is last step of lead life cycle
+    		isDefault   : This will return true ,if the option is default option.
+    
+    4. LeadConvert :
+       a. This is a standard Apex class defiend in the salesforce.
+       b. This is defined under the namespace of Database.
+       c. This class contains the methods required to convert the lead into account,contact and opportunity.
+       d. Methods : 
+    		1. setLeadId(id) : 
+    			This method set the id of the lead record which need to be converted.
+    		
+    		2.  setConvertedStatus(masterLabel): 
+    			This will set the master Label  of the status field.
+    		    This is required method.
+    
+    		3. setDoNotCreateOpportunity(boolean) : 
+    			 If you dont want to create opportunity on lead conversion,then we set the boolean value as 
+    			 true.
+    
+    		4. setAccountId(accountId) : 
+    			When we convert the lead if we dont want the lead to create a new Account .
+                and you want the contact and opportunity to be added as child of existing account record.
+    		    then pass that accountId as setAccountId()
+    
+    		5. setContactId(contactId) : 
+    			When we are converting the lead as ,if you dont want lead to be appened with existing 
+    			contact then pass  existing  contact id as setContactId()
+    
+    		6. setOpportunityId(opportunityId) :
+    			When we are converting the lead, you dont want new Opportunty to be created and append 
+    			with exisiting opportuity record then pass the opportunityId as setOpportunityId
+    
+    		7. setOwnerId()
+    
+    		8. setOpportunityName()
+    
+    		9. setOverwriteLeadSource(overwriteLeadSource)
+    
+    		Example 1: 
+    		Lead l =new Lead(lastname='Ch',FirstName='Satish',Company='Capital',leadSource='Web');
+			insert l;
+			Database.LeadConvert  lc =new Database.LeadConvert();
+			lc.setLeadId(l.id);
+			LeadStatus stat= [select id,MasterLabel  from LeadStatus where isConverted=true];
+			lc.setConvertedStatus(stat.MasterLabel);
+    		Database.convertLead(lc);
+    
+    			
+    		Example 2: This will conver the lead into account and contact.
+    	    Lead l =new Lead(lastname='Ch',FirstName='Satish',Company='Capital',leadSource='Web');
+			insert l;
+			Database.LeadConvert  lc =new Database.LeadConvert();
+			lc.setLeadId(l.id);
+			LeadStatus stat= [select id,MasterLabel  from LeadStatus where isConverted=true];
+			lc.setConvertedStatus(stat.MasterLabel);
+    		lc.setDoNotCreateOpportunity(true);
+    		Database.convertLead(lc);
+    
+    
+   			Example : 3 Lead should be appended with existing account
+    
+    		Account acc =[select id from Account where name='Genepoint'];
+			Lead l =new Lead(lastname='Ch',FirstName='Satish',Company='Capital',leadSource='Web');
+			insert l;
+			Database.LeadConvert  lc =new Database.LeadConvert();
+			lc.setLeadId(l.id);
+			LeadStatus stat= [select id,MasterLabel  from LeadStatus where isConverted=true];
+			lc.setConvertedStatus(stat.MasterLabel);
+			lc.setAccountId(acc.Id);
+			Database.convertLead(lc);
+    
+    		Example : 4  Lead should be appended with existing contact.
+    		Account acc =[select id from Account where name='Genepoint'];
+			Contact con=[select id from Contact where id='0036F00002V8ktT'];
+			Lead l =new Lead(lastname='Ch',FirstName='Satish',Company='Capital',leadSource='Web');
+			insert l;
+			Database.LeadConvert  lc =new Database.LeadConvert();
+			lc.setLeadId(l.id);
+			LeadStatus stat= [select id,MasterLabel  from LeadStatus where isConverted=true];
+			lc.setConvertedStatus(stat.MasterLabel);
+			lc.setAccountId(acc.Id);
+			lc.setContactId(con.Id);
+			Database.convertLead(lc);		
+    		
+    		Example :5 Lead should be appended with existing opportunity.
+    		Account acc =[select id from Account where name='Genepoint'];
+			Contact con=[select id from Contact where id='0036F00002V8ktT'];
+			Opportunity opt=[select id from Opportunity where name='GenePoint SLA'];
+			Lead l =new Lead(lastname='Ch',FirstName='Satish',Company='Capital',leadSource='Web');
+			insert l;
+			Database.LeadConvert  lc =new Database.LeadConvert();
+			lc.setLeadId(l.id);
+			LeadStatus stat= [select id,MasterLabel  from LeadStatus where isConverted=true];
+			lc.setConvertedStatus(stat.MasterLabel);
+			lc.setAccountId(acc.Id);
+			//lc.setContactId(con.Id);
+			lc.setOpportunityId(opt.id);
+			//lc.setDoNotCreateOpportunity(true);
+			Database.convertLead(lc);
+    	
+</apex:page>

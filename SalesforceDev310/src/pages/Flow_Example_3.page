@@ -1,0 +1,3 @@
+<apex:page >
+    <flow:interview name="DML_FLOW_1" finishLocation="Apex_Page" />
+</apex:page>

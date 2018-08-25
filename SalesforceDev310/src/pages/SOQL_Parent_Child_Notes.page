@@ -1,0 +1,115 @@
+<apex:page >
+    <!--
+    Standard Relation : 
+====================
+Parent 		Child		Relation
+Custom1		Standard	Standard 
+
+List<Custom1> result =[select C1F1,C1F2 ,(Select S1F1,S1F2 from Standards) fromm Custom1__c];
+
+Parent 		Child		Relation
+Standard	Custom		Standard
+
+List<Standard> result =[select SF1,SF2 ,(select CF1,CF2 from Customs__c) from Standard];
+
+Parent 		Child		Relation
+Standard1	Standard2	Standard
+
+List<Standard> result =[select SF1,SF2 ,(select CF1,CF2 from Stabdard2s) from Standard];
+
+
+
+
+
+Custom Relation :
+------------------
+Parent 		Child		Relation
+Custom1		Standard	Custom 
+List<Custom1> result =[select C1F1,C1F2 ,(Select S1F1,S1F2 from Standards__r) fromm Custom1__c];
+
+
+Parent 		Child		Relation
+Standard	Custom		Custom
+
+List<Standard> result =[select SF1,SF2 ,(select CF1,CF2 from Customs__r) from Standard];
+
+Parent 		Child		Relation
+Standard1	Standard2	Custom
+
+List<Standard> result =[select SF1,SF2 ,(select CF1,CF2 from Stabdard2s__r) from Standard];
+
+Parent 		Child		Relation
+Custom		Custom		Custom
+
+List<Custom1> result =[select C1F1,C1F2 ,(select C2F1,C2F2 from Custom2s__r) from Custom1__c];
+
+1. Write a soql query to fetch all the accounts with corresponding opportunties 
+2. Create List of opportunties  to store all the opportunties which are fetched in the above query,
+    
+    
+List<Account>  accounts =[select id,name,phone ,(select Name,stagename from Opportunities) from Account];
+List<opportunity> optyList =new List<Opportunity>();
+for(Account a : accounts){
+	if(a.opportunities.size()>0){
+	
+		optyList.addAll(a.opportunities);
+	}
+}
+
+==> Write a query to fetch all the accounts with the corresponding opportunities 
+==> Create a map with account name as key and list of opportunity names value.
+List<Account> accounts =[select Id,Name,Phone ,(select name,Stagename from opportunities) from Account];
+Map<String,List<String>> accMap =new Map<String,List<String>>();
+
+// Take one by one account 
+for(Account a: accounts){
+// Check weather account has opportunities 
+	if(a.opportunities.size()>0){
+		// if account has opportunities  take one by one opportunity and put their names in the list  
+		List<String> optyNames =new List<String>();
+		for(Opportunity op: a.opportunities){
+			optyNames.add(op.name);
+		}
+		accMap.put(a.name,optyNames);
+
+	}
+	
+}
+
+===> Create a wrapper class which contain Account ,List of Contact ,List of Opportunities
+
+===> Write a soql query to fetch all the accounts with corresponding contacts and opportunities 
+
+===> insert the data into wrapper list
+
+	List<Account> accounts =[select id,name,phone,(select lastname,firstname from Contacts) ,(select name,stagename from opportunities) from Account];
+	
+	public class Accoun_Wrap{
+		public Account acc ;
+		public List<Contact> contacts;
+		public List<opportunity> optyList;
+	}
+
+	List<Account_Wrap> myList =new List<Account_Wrap>();
+	for(Account a: accounts){
+		Account_Wrap aw =new Account_wrap();
+		aw.acc=a;
+		aw.contacts=a.contacts;
+		aw.optyList=a.opportunities;
+		myList.add(aw);
+
+	}
+
+
+===> Create a wrapper class Opty_Wrapper to store opportunity  and list of opportunityLineItem
+===> Write a query to fetch opportunity with list of opportunityLineItems 
+
+
+quanity,unitprice,product2Id
+
+
+-->
+    
+    
+    
+</apex:page>

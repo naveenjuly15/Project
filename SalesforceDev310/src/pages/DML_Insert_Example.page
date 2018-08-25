@@ -1,0 +1,16 @@
+<apex:page controller="DML_Insert_Example">
+    <apex:form >
+        <apex:pageMessages />
+    	<apex:pageBlock title="Account">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Create" action="{!create}" />
+            </apex:pageBlockButtons>
+        	<apex:pageBlockSection >
+                <apex:inputText value="{!acc.Name}" />
+                <apex:inputText value="{!acc.Phone}" />
+                <apex:inputText value="{!acc.Industry}" />
+                <apex:inputText value="{!acc.rating}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

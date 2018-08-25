@@ -1,0 +1,11 @@
+<apex:page >
+     <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-1.8.3.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-ui-1.9.2.custom.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-ui-1.9.2.custom.min.js')}" />
+    <script>
+    	var j$=jQuery.noConflict();
+    	j$(document).ready(function(){
+        	alert('This is a test files');
+        });
+    </script>
+</apex:page>

@@ -1,0 +1,38 @@
+<apex:page id="page">
+    <apex:form id="fm">
+    	<apex:pageBlock title="Employee" id="pb">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Submit" oncomplete="show()" />   
+            </apex:pageBlockButtons>
+            <script>
+                	function show(){
+                		var name=document.getElementById('{!$Component.pbs.pbsi1.name}').value;
+                        var phone=document.getElementById('{!$Component.pbs.pbsi2.phone}').value;
+                        if(name==''){
+                        	document.getElementById('{!$Component.pbs.err1}').innerHTML='Enter Name';
+                        }else{
+                        	document.getElementById('{!$Component.pbs.err1}').innerHTML='';
+                        }
+                        if(phone==''){
+                        	document.getElementById('{!$Component.pbs.err2}').innerHTML='Enter Phone';
+                        }else{
+                        	document.getElementById('{!$Component.pbs.err2}').innerHTML='';
+                        }
+                	}
+                </script>
+        	<apex:pageBlockSection id="pbs">
+                
+            	<apex:pageBlockSectionItem id="pbsi1">
+                    <apex:outputLabel value="Enter Name" />
+                    <apex:inputText id="name" />
+                </apex:pageBlockSectionItem>
+                <apex:outputLabel id="err1" />
+                <apex:pageBlockSectionItem id="pbsi2">
+                    <apex:outputLabel value="Enter Phone" />
+                    <apex:inputText id="phone" />
+                </apex:pageBlockSectionItem>
+                <apex:outputLabel id="err2" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

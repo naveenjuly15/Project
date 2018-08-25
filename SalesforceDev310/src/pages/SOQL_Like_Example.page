@@ -1,0 +1,14 @@
+<apex:page controller="SOQL_LIKE_Example">
+    <apex:form >
+        <apex:inputText value="{!searchText}" />
+        <apex:commandButton value="Submit" action="{!search}" /> <br/><br/>
+    	<apex:pageBlock title="Accounts">
+        	<apex:pageBlockTable value="{!accounts}" var="a">
+                <apex:column value="{!a.name}" />
+                <apex:column value="{!a.industry}" />
+                <apex:column value="{!a.phone}" />
+                <apex:column value="{!a.rating}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

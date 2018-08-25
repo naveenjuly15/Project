@@ -1,0 +1,16 @@
+<apex:page >
+    <script src="https://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+    <script>
+    	var j$=jQuery.noConflict();
+    	var studNames=['Sam','Satish','Sudheer','Santosh','Satya','Ram','Ravindra','Raju','Ravi'];
+		j$(document).ready(function(){
+        	 j$('[Id$=name]').autocomplete({source:studNames});
+        });    	
+    </script>
+    <apex:form >
+        Enter Name : <apex:inputText id="name" />
+       
+    </apex:form>
+</apex:page>

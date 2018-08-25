@@ -1,0 +1,23 @@
+<apex:page >
+     <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-1.8.3.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-ui-1.9.2.custom.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-ui-1.9.2.custom.min.js')}" />
+    <script>
+    	var j$=jQuery.noConflict();
+    	j$(document).ready(function(){
+        	j$('[Id$=one]').click(function(){
+            	j$('[Id$=two]').toggle();
+            });
+        });
+    </script>
+    <apex:form >
+    	<apex:pageBlock title="Block1" id="one">
+            This is line one <br/><br/>
+            This is line two 
+        </apex:pageBlock>
+        <apex:pageBlock title="Block1" id="two">
+            This is line one <br/><br/>
+            This is line two 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

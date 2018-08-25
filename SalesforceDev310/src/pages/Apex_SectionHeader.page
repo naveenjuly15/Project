@@ -1,0 +1,27 @@
+<apex:page >
+    <apex:sectionHeader title="SectionHeader" subtitle="SectionHeader_Notes" description="This is the new page" help="/apex/Apex_Page" rendered="true" />
+    apex:sectionHeader: 
+    1. This component is used to create header for the VF page.
+    2. Attributes :
+    	a. title : 
+    		1. it is string value .
+    		2. It will be displayed as title for the header 
+    	b. subTitle : 
+    		1. It is string value .
+    		2. It will be displayed as caption for heading 
+    
+    	c. description :
+    		1. It is a string value .
+    		2. This will be used if you want to given any description about the header 
+    
+    	d. help	:
+    		1. This will display a link with label "helpforthispage"
+    		2. It will take url of the page which need to be opened when we click on "helpforthispage"
+    
+    	f. rendered : 
+    		1. It is a boolean value .
+    		2. When set as true ,header element will be displayed on the page .
+    		3. When set as false ,header element will not be displayed on the page.
+    
+    	Note : if you are using section header this should be first element in the page
+</apex:page>

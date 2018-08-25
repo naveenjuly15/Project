@@ -1,0 +1,62 @@
+<apex:page >
+    Sobject : Salesforce object : 
+    1. Any object created in the salesforce database is reffered as sobject.
+    2. It can be a standard object or it can be a custom object.
+    3. Every sobject has equalilent Pre-defined apex class in salesforce.
+    Example : 
+    Object Name			ClassName 
+    Account				Account
+    Contact 			Contact
+    Lead				Lead
+    Customer__c			Customer__C
+    Payment__c			Payment__c
+    
+   1. Create  instance Account 
+       Account acc =new Account();
+       acc.Name='Wipro';
+       acc.Phone='1234';
+       acc.Industry='Banking';
+    
+    2. Create a instance of Account 
+    	Account acc =new Account(Name='Wipro',Phone='1234',Industry='Banking');
+    
+    3. Create a instance of Account 
+    	Account acc=new Account();
+        acc.put('Name','Wipro');
+    	acc.put('Phone','1234');
+ Format 1:   
+ Example : Create  instance of Lead (LastName,FirstName,Phone,Industry,Rating)
+    		Lead l =new Lead ();
+    		l.LastName='Myla';
+    		l.firtName='Satish';
+    		l.phone='040-1234';
+    		l.Industry='banking';
+    		l.rating='Hot';
+ Example : Create  instance of Contact(LastName,FirstName,Phone)
+    
+ Example : Create a instance of Opportunity(Name,stagename,closeDate,amount)
+    
+ Example : Create a instance of Case (Subject,Priority,Origin,Status)
+    
+ Format 2:   
+ Example : Create  instance of Lead (LastName,FirstName,Phone,Industry,Rating)
+    		Lead l=new Lead(LastName='Myla',FirstName='Satish',Phone='1234',Industry='Banking');
+ Example : Create  instance of Contact(LastName,FirstName,Phone)
+    
+ Example : Create a instance of Opportunity(Name,stagename,closeDate,amount)
+    
+ Example : Create a instance of Case (Subject,Priority,Origin,Status)
+    
+ Format 3:   
+ Example : Create  instance of Lead (LastName,FirstName,Phone,Industry,Rating)
+    		Lead l=new Lead();
+    		l.put('lastname','myla');
+    		l.put('firstName','satish');
+    		l.put('phone','12345');
+ Example : Create  instance of Contact(LastName,FirstName,Phone)
+    
+ Example : Create a instance of Opportunity(Name,stagename,closeDate,amount)
+    
+ Example : Create a instance of Case (Subject,Priority,Origin,Status)
+    
+</apex:page>

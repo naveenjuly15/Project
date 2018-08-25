@@ -1,0 +1,40 @@
+<apex:page >
+    <!--
+    Update :
+    --------
+    1. If you want to update data existing in the sobject we use Update operation
+    2. Syntax: 
+    	update sobject/Sobject[]
+    3. This will run like atomic operation.
+    4. If you want to update the data ,write soql query and fetch the data 
+       modify the data and perform update 
+    
+    Example : 1
+    Fetch all the leads whoes leadsource is web and update thier rating as hot .
+    	List<Lead> leads =[select id,rating from Lead where leadSource='Web'];
+		for(Lead l :leads){
+			l.rating='Hot';
+		}
+		update leads;
+
+	Example :2 
+	Fetch all the opportunities  whose stage is Prospecting and update their stage as Closed won
+		List<Opportunity> optyList =[select id ,stagename from Opportunity wher stagename='Prospecting'];
+		for(Opportunity op: optyList){
+			op.stageName='Closed Won';
+		}
+		update optyList;
+
+
+	Example :3 
+	Fetch all the Accounts which are owned by Satish and re-assign them to wilson.
+	
+		User satish=[select id from user where firstname='satish'];
+		User wilson=[select id from User where firstname='Wilson'];
+		List<Account> accounts =[select id,ownerId from Account where ownerId=:satish.Id];
+		for(Account a: accounts){
+			a.ownerId=wilosn.Id;
+		}
+		update accounts;
+	-->
+</apex:page>

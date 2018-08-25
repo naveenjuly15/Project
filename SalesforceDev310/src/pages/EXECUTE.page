@@ -1,0 +1,34 @@
+<apex:page standardController="Account" recordSetVar="items">
+    <apex:tabPanel id="one" >
+        <apex:tab label="PageBlockTable" labelWidth="100" reRender="one">
+            <apex:pageBlock title="PageBlockTable" >
+                <apex:pageBlockTable value="{!items}" var="a">
+                    <apex:column value="{!a.name}" />
+                    <apex:column value="{!a.industry}" />
+                    <apex:column value="{!a.phone}" />
+                    <apex:column value="{!a.rating}" />
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="DataTable" labelwidth="100" reRender="one">
+            <apex:pageBlock title="PageBlockTable">
+                <apex:dataTable value="{!items}" var="a">
+                    <apex:column value="{!a.name}" />
+                    <apex:column value="{!a.industry}" />
+                    <apex:column value="{!a.phone}" />
+                    <apex:column value="{!a.rating}" />
+                </apex:dataTable>
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="DataList" labelwidth="100" reRender="one">
+            <apex:dataList value="{!items}" var="a">
+                {!a.name}
+            </apex:dataList>
+        </apex:tab>
+         <apex:tab label="Repeat" labelwidth="100" reRender="one">
+            <apex:repeat value="{!items}" var="a">
+                {!a.name}
+            </apex:repeat>
+        </apex:tab>
+    </apex:tabPanel>
+</apex:page>

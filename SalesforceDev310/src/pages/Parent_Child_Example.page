@@ -1,0 +1,19 @@
+<apex:page controller="Parent_Child_Example_1" sidebar="false">
+    <apex:dataTable value="{!accounts}" var="a" width="1200px;" cellpadding="7px" rules="all" border="2px" bgcolor="#FAFAFA" columnsWidth="200px,200px,200px,300px,300px">
+        <apex:column value="{!a.name}" headervalue="Account Name"/>
+        <apex:column value="{!a.industry}" headerValue="Industry" />
+        <apex:column value="{!a.phone}" headerValue="Phone"/>
+        <apex:column headerValue="Contacts">
+        	<apex:dataTable value="{!a.contacts}" var="b"  width="300px"  >
+                <apex:column value="{!b.lastname}" />
+                <apex:column value="{!b.firstName}" />
+            </apex:dataTable>
+        </apex:column>
+         <apex:column headerValue="opportunities">
+        	<apex:dataTable value="{!a.opportunities}" var="c"  width="300px"  >
+                <apex:column value="{!c.name}" />
+                <apex:column value="{!c.stagename}" />
+            </apex:dataTable>
+        </apex:column>
+    </apex:dataTable>
+</apex:page>

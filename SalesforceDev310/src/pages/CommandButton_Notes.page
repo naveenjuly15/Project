@@ -1,0 +1,42 @@
+<apex:page >
+    <apex:sectionHeader title="CommandButton" subTitle="Notes" />
+    <apex:pageBlock title="CommandButton" >
+    	Apex:commandButton : 	
+        1. It is used to create button on the page .
+        2. It is a child component of apex:form
+        3. Attributes : 
+        	a. value : 
+        		1. It is string value .
+        		2. Label that should be displayed on the button is given as value.
+        	
+        	b. action : 
+        		1. When we click on the button, logic that should be performed is given as action.
+        		2. action can be a method from apex class or url of the page.
+	    
+        	c. disabled :
+        		1. It is a boolean value .
+        		2. When set as true ,button will be disabled.
+        		3. Default value is false.
+        	d. rendered : 
+        		1. It is a boolean value .
+        		2. When set as true ,commandButton will be displayed on the page 
+        		3. When set as false ,commandButton will be hidden
+        		4. Default value is true.
+        	
+        	e. Style  : 
+        		1. If you want to apply any inline  css on the button then we use style 
+        		2. Cascading style sheets 
+        		Example : 
+        			background: background color of button 
+        			color  : color of the text printed on the button 
+        			width  : width of the button 
+        			height : height of the button 
+    </apex:pageBlock>
+    <apex:form >
+        <apex:commandButton value="Submit" />
+        <apex:commandButton value="Link" action="/apex/Test_page" />
+        <apex:commandButton value="Cancel" disabled="true" />
+        <apex:commandButton value="Test" rendered="false" />
+        <apex:commandButton value="MyStyle" style="background:yellow;color:red;width:100px;"  />
+    </apex:form>
+</apex:page>

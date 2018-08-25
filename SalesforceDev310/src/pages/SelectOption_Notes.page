@@ -1,0 +1,40 @@
+<apex:page >
+    SelectOption :
+    ---------------
+    1. It is a pre-defined apex class.
+    2. This class is defined under the namespace of system.
+    3. This class is used to create Option using apex 
+    4. Syntax : 
+    	SelectOption(ItemValue,ItemLabel)
+    
+    Example ; 
+    SelectOption op1 =new SelectOption('Hyd','TG');		
+    SelectOption op2 =new SelectOption('Ban','KA'); 
+    <!--
+    List<SelectOption> options =new List<selectOption>();
+    options.add(op1);
+    options.add(op2);
+	
+    Example : 2 
+    ItemLabel 		ItemValue 
+    CSE 			Excellent
+    ECE				Good
+    EEE				Not Bad
+    IT				Poor
+    List<SelectOption> options =new List<SelectOption>();
+    SelectOption op1 =new SelectOption('Excelent','CSE');
+    SelectOption op2 =new SelectOption('Good','ECE');
+    options.add(op1);
+    options.add(op2);
+    
+    Example 3: 
+    1. Create a List of cities 
+    2. Based on the names available in the list create options 
+	List<String> names =new List<String>{'Hyd','Ban','Che','Pune'};
+	List<SelectOption> options =new List<SelectOption>();
+	for(String s: names){
+		SelectOption op1 =new SelectOption(s,s);
+		options.add(op1);
+	}
+-->
+</apex:page>

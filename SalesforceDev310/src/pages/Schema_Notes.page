@@ -1,0 +1,104 @@
+<apex:page >
+    Schema Programming:
+    ------------------
+    1. In the salesforce every sobject corresponding apex class.
+    2. Object Name	  		ClassName
+       -----------------------------------
+    	Account				Account
+    	Contact				Contact
+    	Customer__C			Customer__c
+    
+    3. Schema.SobjectType : This will specify instance of the apex class belongs to which sobject
+    	Example : Account acc; // Account is a class and acc is  varaible 
+    	
+    	Schema.SobjectType acc=Account.sobjectType;
+    	Schema.SobjectType con=Contact.SobjectType;
+    	Account acc =new Account();
+    	Schema.SobjectType a=acc.getSobjectType();
+    	System.debug(a); // Account
+    
+    4. Schema.DescribeSobjectResult :
+       1. DescribeSobjectResult is a pre-define apex class.
+       2. This is defined under the namespace of schema
+       3. This class contains the methods required to retrive the properties of sobject.
+       4. Methods :
+    		a. getKeyPrefix() :This will return Three character key of sobject.
+    					Example : Account : 001
+    							: Contact : 003
+    							: User 	  : 005
+    
+    		b. getLabel(): This will return label name of the object.
+    
+    		c. getLabelPlural() :This will return plural label of the object.
+    
+    		d. getLocalName()   : This will return local name of the object .
+    	
+    		e. getName()		: This will return the object Name 
+    
+    		f. getRecordTypeInfos():This will return the list of recordType available on this object
+    
+    		g.getRecordTypeInfosByName():This will return all the recordTypes in the form of map
+    							where record name is the key and recordType is value 
+    				<!-- Map<String,Schema.RecordType> -->
+    
+    		h.isAccessible() : This will return true ,if the current user has read access on the object.
+    
+    		i.isCreateable() : This wil return true , if the current user has create access on the object.
+    
+    		j.isCustom()	 : This will return true ,if the object is custom object.
+    
+    		k.isCustomSetting(): This will return true, if the object is a customsetting 
+    
+    		l.isDeletable() : This will return true, if the current user has delete access on the object,
+    
+    		m.isFeedEnabled():This will return true,if the object has feed enabled on the object.
+    
+    		n.isMergeable()  : This will return true,if the object object has merge access enabled
+    
+    		o.isMruEnabled():  This will return true,if the object has most recently used option is enabled.
+    
+    		p.isQueryable() : This will return if the  object is queried by current user
+   			
+    		q.isSearchable():This will return true ,if the we have search option enabled on this object.
+    
+    		r.isUndeletable():This will return true,if delete access is enabled of the current user
+    	
+    		s.isUpdateable(): This will return true,if the update access is enabled for the currrent user.
+    
+    	5. getDescribe() : This method wil return the properties of sobject in the form 
+    						Schema.DescribeSobjectResult.
+    			
+    			Schema.DescribeSobjectResult result=Account.sobjectType.getDescribe();
+    
+    	6. How to fetch fields of given sobject.
+    		1. Schema.SobjectField : This will reffer to the field of given sobject.
+    		2. <!-- Map<String,Schema.SobjectField> fldMap 
+					Name of the field is key and properties of a field is the value .
+				-->
+    		Schema.DescribeSobjectResult result =Account.SobjectType.getDescribe();
+    		<!--
+				Map<String,Schema.SobjectField> fldMap =result.fields.getMap();
+			-->
+    
+    	7. Schema.DescribeFieldResult : 
+    		1. DescribeFieldResult is a pre-defined apex class.
+    		2. This class contains the method to return the properties of a given field.
+    		3. Methods :
+    			a. getLabel()
+    			b. getName()
+    			c. getType() : This will return type of the field.
+    			d. getPicklistValues(): This will return the list of picklist options in the field 
+    									in the form of List of Schema.PickListEntry
+    			f. isNameField() : This will return true ,if the field is a name field.
+    			g. isAutoNumber() 
+    			h. isExternalId()
+    			i. isCalculatedValue()
+    
+    		  Schema.DescribeFieldResult result=Account.Industry.getDescribe();
+    		  if( result.getType()==Schema.PickList){
+    				<!-- List<Schema.PickListEntry> options =result.getPickListValues();
+					-->
+    		   }
+    	
+    	
+</apex:page>

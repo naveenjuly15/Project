@@ -1,0 +1,37 @@
+<apex:page controller="Acc_Line_Items">
+    <apex:form >
+        <br/><br/>
+    	<apex:pageBlock mode="mainDetail" id="pb" >
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Add" action="{!add}" reRender="pb" rendered="{!flag3}"/>
+                <apex:commandButton value="Submit" action="{!submit}" rendered="{!flag2}"  reRender="pb"/>
+            </apex:pageBlockButtons>
+        	<apex:pageBlockSection rendered="{!flag1}">
+            	<apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter Name" />
+                    <apex:inputText value="{!acc.Name}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter Phone" />
+                    <apex:inputText value="{!acc.phone}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter Owner" />
+                    <apex:inputText value="{!acc.Owner}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter 	AnnualRevenue" />
+                    <apex:inputText value="{!acc.AnnualRevenue}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" rendered="{!accs.size>0}">
+            	<apex:pageBlockTable value="{!accs}" var="a">
+                    <apex:column headerValue="Name" value="{!a.name}" />
+                    <apex:column headerValue="Phone" value="{!a.phone}" />
+                    <apex:column headerValue="City" value="{!a.Owner}" />
+                    <apex:column headerValue="Email" value="{!a.AnnualRevenue}" />
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>  
+    </apex:form>
+</apex:page>

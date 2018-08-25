@@ -1,0 +1,18 @@
+<apex:page controller="Employee_Create">
+    <apex:form >
+        <apex:pageMessages />
+    	<apex:pageBlock title="Account and Contact">
+        	<apex:pageBlockButtons location="top">
+                <apex:commandButton value="Submit" action="{!create}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account" collapsible="false">
+                <apex:inputText value="{!acc.Name}" />
+                <apex:inputText value="{!acc.Industry}" />
+                <apex:inputText value="{!acc.phone}" />
+                <apex:inputText value="{!acc.Type}" />
+                <apex:inputText value="{!acc.rating}" />
+                <apex:inputText value="{!acc.ownership}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+</apex:form>
+</apex:page>

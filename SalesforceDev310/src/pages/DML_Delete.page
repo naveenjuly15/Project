@@ -1,0 +1,51 @@
+<apex:page >
+    <!--
+    Delete : 
+    -------
+    1. This is used to delete the data from sobject.
+    2. Syntax : 
+    	delete sobject/Sobject[]
+    
+    Example : 
+    1. Fetch all the leads  which are created to today and delete them
+    	List<Lead> leads =[select id ,lastname from Lead where createddate=TODAY];
+		delete leads;
+
+	2. Fetch all the opportunities whose stage is closed lost and delete them
+
+	   List<Opportunty> optyList=[select id,name from Opportunity where stageName='Closed Lost'];
+	   delete optyList;
+
+	Database.delete(sobject[],allornone);
+	--------------------------------------
+	This will perform the dml operation as atomic or non-atomic.
+	Database.DeleteResult : 
+	-----------------------
+	This class contains the information about the  status of the dml operation delete .
+	
+	Methods : 
+	1. getId() : This will return the Id of the record which we have deleted.
+
+	2. getErrors(): This will return errors which are generated.
+
+	3. isSuccess(); This will return the status of the dml as success of failure 
+
+	Database.DeleteResult[] result =Database.delete(sobject[],false);
+
+
+	undelete : 
+	-------------
+	1. This will undelete the list of records which are deleted.
+	2. Syntax : 
+			undelete sobject/Sobject[]
+
+	Example : 
+	Fetch all those deleted accounts whose industry is Banking and  undelete them
+
+		List<Account> accounts =[select id,name from Account where industry='Banking' and isDeleted=true ALL ROWS];
+		undelete accounts;
+
+		Database.undelete(Sobject[] ,allornone)
+		Database.undelete(Id[],allornone)
+	-->
+</apex:page>

@@ -1,0 +1,26 @@
+<apex:page controller="Dynamic_Example">
+    <style>
+    .box{
+        width:100px;
+        height:150px;
+     	}
+    </style>
+    <apex:form >
+    	<apex:pageBlock title="Example">
+            
+        	<apex:selectList multiselect="true" value="{!selected}" styleClass="box" >
+                <apex:selectOptions value="{!options}" />
+            </apex:selectList>
+            <apex:commandButton value="Query" action="{!getData}" reRender="one,two" />
+            <apex:inputTextarea styleClass="box" value="{!query}" id="one"/>
+            <br/><br/>
+            <apex:pageBlockTable value="{!accounts}" var="record" id="two">
+            	<apex:repeat value="{!selected}" var="fld">
+                    <apex:column value="{!record[fld]}" />
+                </apex:repeat>
+            	
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+      
+    </apex:form>
+</apex:page>

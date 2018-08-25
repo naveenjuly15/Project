@@ -1,0 +1,9 @@
+<apex:page controller="Schema_Example_3">
+    <apex:form >
+    	<apex:pageBlock title="Options ">
+        	<apex:pageBlockTable value="{!options}" var="a">
+                <apex:column value="{!a}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page controller="SOQL_Example_5">
+    <apex:form >
+    	<apex:pageBlock title="Accounts" id="one">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Limit" action="{!setLimit}" reRender="one" />
+                <!--- <apex:commandButton value="Variable" action="{!invoke}" reRender="one" /> -->
+            </apex:pageBlockButtons>
+        	<apex:pageBlockTable value="{!accounts}" var="a">
+                <apex:column value="{!a.name}" />
+                <apex:column value="{!a.phone}" />
+                <apex:column value="{!a.industry}" />
+                <apex:column value="{!a.rating}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

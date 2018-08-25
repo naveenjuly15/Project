@@ -1,0 +1,264 @@
+<apex:page >
+    <!--
+	1. Create a List of Accounts with the following data 
+
+	Name 	Phone    Industry
+	Wipro	1111	 Energy
+	TCS	2222	 Banking
+	Dell	4444	 Educaiton
+
+	List<Account> accounts =new List<Account>();
+
+	----------------------------------------------------------------------------
+	|  {Wipro--1111-Energy}  | TCS ---222---Banking  | Dell ---4444--Education |
+	----------------------------------------------------------------------------
+					|
+					a
+		
+	for (Account a : accounts){
+		System.debug('Name :'+a.Name); // Wipro				//TCS     Dell
+		System.debug('Phone:'+a.phone); // 1111				222	   4444
+		System.debug('Industry:'+a.industry); // Energy			Banking	   Education
+	}
+2. Create a List of Contact with following data 
+
+	LastName	FirstName	Phone
+	M		Satish		1234
+	K		Kiran		1111
+	L		Prasad		3333
+
+
+3. Create a List of Opportuntieis  with following data
+
+	Name		StageName	CloseDate
+	Salesforce	Prospect	10-3-2018
+	Admin		Closed WOn	12-2-2019
+
+
+	for(Opportunity p:opporunities){
+
+	}
+	
+==> List<Contact> contacts: 		// LastName,firstName,phone,email,otherphone
+
+	for(Contact c: contacts){
+		system.debug(c.lastName);
+		System.debug(c.firstName);
+		System.debug(c.phone);
+	}
+
+
+
+===> List<Opportunity> optyList : 
+	
+	Name,StageName,closeDate
+
+	for(Opportunity op: optyList){
+
+	}
+
+==> List<Account> accounts : 
+	Take all account names put them in a separate list .
+
+	List<String> accountNames =new List<String>();
+	for(Account a: accounts){
+		accountNames.add(a.name);
+	}
+
+
+===>> Create a list of contacts with following data 
+
+	LastName  FirstName	Phone 
+	K	  Kiran		1111
+	M	  Satish	2222
+	L	  Ravi		3333
+
+	1. Create a list which store all the phone numbers of the above contacts 
+
+	List<Contact> contacts =new List<Contact>();
+	Contact c1=new Contact();
+	c1.LastName='K';
+	c1.FirstName='Kiran';
+	c1.Phone='1111';
+	contacts.add(c1);
+	
+	List<String> phones =new List<String>();
+	for(Contact c:contacts){
+		phones.add(c.phone);
+	}
+
+
+===> Create a list of Opportunity 
+
+	 Name	StageName	CloseDate 
+	 aaa	Prospecting	10-Jan-2018
+	 bbb	Quote		15-Feb-2018
+	 ccc	CloseWon	23-Mar-2018
+	 ddd	Closed Lost	15-Mar-2018
+
+ ==> Get the names of all those opportunties whose stagename is not closed won
+
+==> Get the names of all those opportunities whose stagename is closed Lost 
+
+==> Get the list of all those opportunties whose close date before 1-mar-2018
+
+List<Opportunity> optyLists =new List<Opportunity>();
+Opportunity op =new Opportunity();
+op.Name='aaa';
+op.stagename='Prospecting';
+op.closeDate=Date.newInstance(2018,1,10);
+optyLists.add(op);
+
+List<String> closedNames =new List<String>();
+List<String> otherNames =new List<String>();
+List<Opportunity> optys=new List<Opportunity>();
+
+for(Opportunity op: optyLists){
+
+	if(op.stageName=='Closed Lost'){
+		closedNames.add(op.name);
+	}
+	if(op.stageName!='Closed won'){
+		otherNames.add(op.name);
+	}
+	if(op.closeDate < Date.newInstance(2018,3,1) ){
+		optys.add(op);
+	}
+}
+
+
+===> We have list of account records with name : accounts 
+    1. fetch all the accounts whose industry is Banking 
+    2. fetch all the accounts whose rating is warm 
+    3. fetch all the account phone numbers whose ownership is Public 
+    
+    1. List<Account> bankingLists=new List<Account>();
+    2. List<Account> warmLists=new List<Account>();
+    3. List<String> phones =new List<String>();
+	
+	for(Account a : accounts){
+		if(a.industry=='Banking'){
+			bankingLists.add(a);
+		}
+		if(a.rating=='Warm'){
+			warmLists.add(a);
+		}
+		if(a.ownership=='Public'){
+			phones.add(a.phone);
+		}
+	}
+
+
+===> We have group of opportunities 
+	
+1. Fetch all the opportunities whose stagename is closed won
+2. Fetch all the opportunities whose stagename is closed lost 
+3. fetch all the opportunities whose stagname is prospect 
+4. Fetch all the opportunities whose stagname is not closed won ,closed lost ,prospect.
+
+List<Opportunity> optyLists =new List<Opportunity>();
+
+1. List<Opportunity> closedList =new List<Opportunity>();
+2. List<Opportunity> lostList =new List<Opportunity>();
+3. List<Opportunity> prospectList=new List<Opportunity>();
+4. List<opportunity> otherList =new List<Opportunity>();
+
+	for(Opportunity op : optyList){
+
+		if(op.stageName =='Closed Won'){
+			closedList.add(op);
+
+		}else{
+			if(op.stageName=='Closed Lost'){
+
+				lostList.add(op);
+			}else{
+				if(op.stageName=='Prospect'){
+
+					prospectList.add(op);
+				}else{
+					otherList.add(op);
+				}
+			}
+		}
+	}
+
+
+
+===>>  List of Leads ... Take every lead ,based on the data in the lead create 
+			 a contact
+
+	lastName,FirstName,email,phone :
+
+	List<Lead> leads =new List<Lead>();
+
+	List<Contact> contacts =new List<Contact>();
+	for(Lead l:leads){
+		Contact c=new Contact();
+		c.lastName=l.lastName;
+		c.FirstName=l.firstName;
+		c.phone=l.phone;
+		contacts.add(c);
+	}
+
+	
+===>> List of Accounts : 
+	
+	if account type is new Customer create a Opportunity 
+	opportuntiy		
+	Name		as AccountName 
+	stagename	as Prospect
+	closeDate	10 days from today
+	leadSource	as Email
+
+	List<Opportunity> optyList =new List<Opportunity>();
+	
+	for(Account a : accounts){
+		if(a.type =='New Customer'){
+			Opportunity op =new Opportunity();
+			op.Name=a.Name;
+			op.closeDate=System.today()+10;
+			op.LeadSource='Email';
+			op.stageName='Prospect';
+			optyList.add(op);
+		}
+	}
+
+==>>> Rating : Warm , Cold ,Hot : 
+
+===>  List<Account> warmAccounts ;
+      List<Account> coldAccounts ;
+	
+     List<Account> hotAccounts;
+
+	for(Account a: accounts){
+		if(a.rating=='Hot'){
+			hotAccounts.add(a);
+		}else{
+			if(a.rating=='Cold'){
+				coldAccounts.add(a);
+			}else{
+				warmAccounts.add(a);
+			}
+		}
+	}
+
+List<List<Account>> accList =new List<List<Account>>();
+
+Account 1, Account2, Account 3 : List<Account>
+
+Op1,Op2,Op3  : List<Opportunity>
+
+S1,s2,s3 : List<String>
+
+List<Account> , List<Account>,List<Account> : List<List<Account>>
+
+
+
+
+
+
+
+	
+	-->
+</apex:page>

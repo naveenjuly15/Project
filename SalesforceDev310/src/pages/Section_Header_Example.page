@@ -1,0 +1,5 @@
+<apex:page >
+    <apex:sectionHeader title="Employee" subtitle="New Employee" help="/apex/EmployeeHelp" description="New Employee registration page" />
+    Enter Employee details like name,phone,email, city etc......
+    
+</apex:page>

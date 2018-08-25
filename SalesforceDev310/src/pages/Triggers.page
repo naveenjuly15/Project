@@ -1,0 +1,59 @@
+<apex:page >
+    Triggers :
+    -------------
+    a. Trigger is automated action which will be fired when a dml operation is performed on a record.
+    b. DML operation can be insert ,update ,upsert ,delete ,merge or undelete
+    c. Triggers are classified into two types 
+    	1. Before Triggers 
+    	2. After Triggers 
+    d. Before Triggers : 
+    	1. These are operations which are fired before the data is saved to sobject.
+    	2. Example :
+    		Before Insert 
+    		Before Update 
+    		Before Delete 
+     e. After Triggers : 
+    	1. These are the operations which are fired after the data is saved to database.
+    	2. Example : 
+    		After Insert 
+    		After Update 
+    		After Delete 
+    		After Undelete
+    
+     f. Trigger events : 
+    	a. There the events which are going to fire the triggers 
+    	b. Before Insert ,Before Update ,Before Delete,After Insert ,After Update ,After Delete
+    	   After undelete.
+    
+     g. Syntax : 
+    	trigger triggerName  on Sobject(event){
+    
+    	}
+    
+      Example :
+    	trigger example on Account(before insert){
+    	}
+    
+    	trigger example on Contact(before insert, after update){
+    
+    	}
+    
+    	Example : Create a before insert trigger on Contact
+    		trigger example on Contact(before Insert){
+    
+    		}
+    	Example : Create after delete trigger on Opportunity
+    		trigger demo on Opportunity (after delete){
+    
+    		}
+    
+    	Example : Create after insert ,after delete trigger on Case
+    		 trigger example on Case( after insert ,after delete ){
+    
+    		 }
+    	Example : Create after delete ,after undelete ,after insert trigger on Account.
+    		 trigger example on Account(after insert,after delete ,after undelete){
+    
+    		}
+    
+</apex:page>

@@ -1,0 +1,54 @@
+<apex:page >
+    Apex:PageBlock:
+    1. It is used to create a block on the page  .
+    2. Attributes 
+    	a. title  : 
+    		1. It will be a string value .
+    		2. This will be printed on the header of the pageblock as heading for the block
+    
+    	b. helpTitle : 
+    		1. It will be a string vlaue .
+    		2. This will be printed on the right corner of the pageblock header
+    
+    	c. helpUrl	:
+    		1. It will be a url of a page .
+    		2. When we click on the help title which page should be opened that page url should be defined as helpUrl
+    
+    	d. tabStyle  :
+    		1. It will take sobject name .
+    		2. Sobject is nothing but a salesforce objects created in the databae (Standard Object or Custom object)
+    		3. Which ever the sobject name we have given that object tab style will be applied for the pageBlock
+    		Example :	
+    			tabStyle="Account" 
+    			tabstyle="Customer__c" 
+    
+    	e. rendered :
+    		1. It is a boolean value.
+    		2. When set as true ,pageBlock component will be displayed on the page.
+    		3. default value is true.
+    
+    	f. Mode   : 
+    		1. This will specify in which mode vf page should be opened .
+    		2. Possible values are edit and mainDetail
+    <apex:pageBlock >
+    	This is block one 
+    </apex:pageBlock>
+    <apex:pageBlock title="Employee">
+    	This is employee page 
+    </apex:pageBlock>
+    <apex:pageBlock title="Employee" helpTitle="needHelp??" helpUrl="/apex/Test_Page" >
+    	This is employee block with help
+    </apex:pageBlock>
+    <apex:pageBlock title="Employee" helpTitle="needHelp??" helpurl="/apex/Test_Page" tabStyle="Lead" >
+    	This block has same style as Lead Tab 
+    </apex:pageBlock>
+    <apex:pageBlock title="Student" rendered="false" >
+    	This block has same style as Lead Tab 
+    </apex:pageBlock>
+     <apex:pageBlock title="Student_Edit" mode="edit">
+    	This block has same style as Lead Tab 
+    </apex:pageBlock>
+    <apex:pageBlock title="Student_Detail" mode="maindetail">
+    	This block has same style as Lead Tab 
+    </apex:pageBlock>
+</apex:page>

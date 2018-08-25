@@ -1,0 +1,45 @@
+<apex:page >
+      <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-1.8.3.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-ui-1.9.2.custom.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-ui-1.9.2.custom.min.js')}" />
+    <script>
+    	var j$=jQuery.noConflict();
+    	j$(document).ready(function(){
+        	j$('[Id$=two]').hide();
+            j$('[Id$=three]').hide();
+            j$('[Id$=city]').change(function(){
+                var city=j$('[Id$=city]').val();
+            	if(city=='Hyd'){
+                    j$('[Id$=two]').show();
+                    j$('[Id$=three]').hide();
+            	}else{
+                	j$('[Id$=two]').hide();
+                    j$('[Id$=three]').show();
+                }
+            });
+            
+        });
+    </script>
+    <apex:form >
+    <apex:pageBlock title="Student">
+    	<apex:pageBlockSection id="one">
+        	<apex:pageBlockSectionItem >
+                <apex:outputLabel value="Enter City" />
+                <apex:inputText id="city" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection id="two">
+        	<apex:pageBlockSectionItem >
+                <apex:outputLabel value="Enter Adhar"/>
+                <apex:inputText />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection id="three" >
+        	<apex:pageBlockSectionItem >
+                <apex:outputLabel value="Enter Pan" />
+                <apex:inputText />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+   </apex:form>
+</apex:page>

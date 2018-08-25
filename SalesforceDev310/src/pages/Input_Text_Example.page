@@ -1,0 +1,14 @@
+<apex:page controller="Calculator_Example">
+    <apex:form >
+    	<apex:pageBlock title="Calculator" id="block">
+        	<apex:pageBlockButtons location="top">
+                <apex:commandButton value="Add" action="{!add}" reRender="block"/>
+                <apex:commandButton value="Mul" action="{!mul}" reRender="block"/>
+                <apex:commandButton value="Reset" action="{!reset}" reRender="block" />
+            </apex:pageBlockButtons>
+            Enter Aval : <apex:inputText value="{!aval}" /> <br/><br/>
+            Enter BVal : <apex:inputText value="{!bval}" /> <br/><br/>
+            Result 	   : <apex:inputText value="{!result}" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

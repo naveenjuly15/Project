@@ -1,0 +1,20 @@
+<apex:page controller="SOQL_OrderBy_Example">
+    <apex:form >
+    	<apex:pageBlock title="SOQL_Data" id="one">
+             <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Ascending" action="{!sortByName}" reRender="one" />
+                <apex:commandButton value="Descending" action="{!sortByNameDesc}" reRender="one" />
+                <apex:commandButton value="Multiple" action="{!sortByMultiple}" reRender="one" />
+                <apex:commandButton value="SortByDate" action="{!sortByDate}" reRender="one" />
+                <apex:commandButton value="LastFive" action="{!lastFive}" reRender="one" />
+            </apex:pageBlockButtons>
+        	<apex:pageBlockTable value="{!accounts}" var="a">
+                <apex:column value="{!a.name}" />
+                <apex:column value="{!a.industry}" />
+                <apex:column value="{!a.phone}" />
+                <apex:column value="{!a.createdDate}" />
+                <apex:column value="{!a.lastmodifieddate}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

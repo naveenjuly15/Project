@@ -1,0 +1,69 @@
+<apex:page >
+    Plugin :
+    ---------
+    1. It is a interface defined in the process namespace.
+    2. If you want to use any apex class in the flows then class has to implement Process.Plugin interface.
+    3. If any apex class is implementing process.Plugin interface ,it has to define two methods
+        a. invoke
+        b. describe
+    4. invoke : This method is used to take inputparameter from Plugin and return result.
+              : What ever the logic we want to write ,that should be defined with in the invoke method.
+    
+    5. describe: This method will describe inputparameters and outputparameters used in the plugin
+    
+    6. PluginRequest : 
+       a. This is a pre-defined apex class .
+       b. This is defined under the namespace of Process.
+       c. This class will contain all the inputparameters given by the flow .
+       d. This class has a datamember of inputparameters 
+            <!--    Map<String,Object> inputparameters 
+            -->
+            Process.PluginRequest request =new Process.PluginRequest();
+            String name =(String)request.inputparamters.get('empName');
+            Decimal salary=(Decimal)request.inputparameters.get('salary');
+    
+    7. PluginResult:
+        a.This is a pre-defined apex class.
+        b. This is defined under the namespace of process.
+        c. This class will contain the all the outputparameters that need to be returned.
+        d. It has datamember outputparameters 
+            <!-- Map<String,Object> outputparameters -->
+            <!-- Map<String,Object> resMap=new Map<String,Object>();
+                  resMap.put('Name','Satish');
+                  resMap.put('Phone','040-1234');
+                  Process.PluginResult result =new Process.PluginResult(resMap);
+            -->
+    
+      8. Process.PluginDescribeResult.Inputparameter(name,type,flag)
+         a. This is a pre-defined apex class .
+         b. This is used to define the properties of inputparameter 
+         c. Parameters 
+                a. name : name of the inputparameter 
+                b. type : Type of the inputparameter 
+                           Process.PluginDescribeResult.parameterType.String
+                           Process.PluginDescribeResult.ParameterType.Decimal
+                c. flag  : it is required then set as true
+    
+            Example : 
+        ip1=new Process.PluginDescribeResult.Inputparameter('Name',Process.PluginDescribeResult.ParameterType.String,true);
+        
+        ip2=new Process.PluginDescribeResult.Inputparameter('Salary',Process.PluginDescribeResult.ParameterType.Decimal,true)
+     9. Process.PluginDescribeResult.outputparameter(name,type)
+         a. This is a pre-defined apex class .
+         b. This is used to define the properties of outputparameter 
+         c. Parameters 
+                a. name : name of the outputparameter 
+                b. type : Type of the outputparameter 
+                           Process.PluginDescribeResult.parameterType.String
+                           Process.PluginDescribeResult.ParameterType.Decimal
+        op2= new Process.PluginDescribeResult.outputParameter('Salary',Process.PluginDescribeResult.ParameterType.Decimal);
+        op3= new Process.PluginDescribeResult.Outputparameter('Bonus',Process.PluginDescribeResult.ParameterType.Decimal);
+    
+    10. Process.PluginDescribeResult : 
+        a. This is predefined apex class .
+        b. This class contains all the list of inputparameters and outputparameters.
+            <!--
+                List<Process.PluginDescribeResult.Inputparameter> inputparameters;
+                List<Process.PluginDescribeResult.Outputparameter> outputparameters;
+            -->
+</apex:page>

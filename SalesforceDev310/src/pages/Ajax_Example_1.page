@@ -1,0 +1,14 @@
+<apex:page >
+    <!-- If you include connection.js file ,then ajax toolkit is included in the VF page -->
+     <script src="/soap/ajax/43.0/connection.js" type="text/javascript">
+     </script>
+    <script>
+    /*
+    	sforce.connection.sessionId='{!GETSESSIONID()}';
+        alert(sforce.connection.sessionId);
+    */
+    	var result=sforce.connection.login('admin@312.com','salesforce123');
+    	alert(result);
+            
+    </script>
+</apex:page>

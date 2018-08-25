@@ -1,0 +1,45 @@
+<apex:page >
+    InputText : 
+    1. This is a child component of apex:form
+    2. This will create textbox on the page 
+    3.Attributes :
+    	a. MaxLength:  
+    		1. it is a integer value ;
+    		2. This will specify the maximum length of the input we can enter 
+    	b. size	:
+    		1. It is a integer value .
+    		2. It will specify the size of the inputText box 
+    	
+    	c. disabled : 
+    		1. it is a boolean value .
+    		2. When set as true ,inputText box will be disabled .
+    	
+    	d. direction : 
+    		1. it will specify the direction of the data .
+    		2. Possible values are RTL (Right to left ) LTR(Left to Right)
+    
+    	e. Style : 
+    		1. it is used to apply inline css for inputText
+    
+    	f. required : 
+    		1. It is a boolean value 
+    		2. when set as true ,we cannot submit the form without entering this value 
+    
+    	g. value : If you want to set or get the value entered in the inputtext box 
+    			   to a varaible of an apex class then define as 
+    			<!--	{! variablename}  -->
+    
+  ==================================================================================
+    <apex:form >
+        InputText  : <apex:inputText /> <br/><br/>
+        MaxLength  : <apex:inputText maxlength="4" /> <br/><br/>
+        MaxSize	   : <apex:inputText size="4" /><br/><br/>
+        Disabled   : <apex:inputText disabled="true" /> <br/><br/>
+        Rendered   :<apex:inputText rendered="false" /><br/><br/>
+        Direction  : <apex:inputText dir="RTL" /><br/><br/>
+        Style 	   : <apex:inputText style="background:yellow;color:red;" /><br/><br/>
+        Required   : <apex:inputText required="true" /><br/><br/>
+        Value 	   : <!-- <apex:inputText value="{!variable}" /> -->
+        
+    </apex:form>
+</apex:page>

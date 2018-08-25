@@ -1,0 +1,38 @@
+<apex:page controller="Employee_Line_Items">
+    <apex:form >
+        <br/><br/>
+    	<apex:pageBlock mode="mainDetail" id="pb" >
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Add" action="{!add}" reRender="pb" rendered="{!flag3}"/>
+                <apex:commandButton value="Submit" action="{!submit}" rendered="{!flag2}"  reRender="pb"/>
+            </apex:pageBlockButtons>
+        	<apex:pageBlockSection rendered="{!flag1}">
+            	<apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter Name" />
+                    <apex:inputText value="{!emp.Name}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter Phone" />
+                    <apex:inputText value="{!emp.phone}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter City" />
+                    <apex:inputText value="{!emp.city}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter Email" />
+                    <apex:inputText value="{!emp.email}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" rendered="{!employees.size>0}">
+            	<apex:pageBlockTable value="{!employees}" var="a">
+                    <apex:column headerValue="Name" value="{!a.name}" />
+                    <apex:column headerValue="Phone" value="{!a.phone}" />
+                    <apex:column headerValue="City" value="{!a.city}" />
+                    <apex:column headerValue="Email" value="{!a.email}" />
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

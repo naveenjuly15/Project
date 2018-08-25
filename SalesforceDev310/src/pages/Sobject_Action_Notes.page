@@ -1,0 +1,37 @@
+<!--
+Standard Actions : 
+1. on every sobject salesforce has provided some standard Actions,
+2. Example : save ,quicksave,edit,delete,listview,view,cancel,create 
+Note : If you want to perform edit or delete actions using standard buttons then we must pass the Id of the 
+       record in the url
+3. When we pass the recordId listview button will not work.
+https://ap5.salesforce.com/apex/PageName?id=recordId
+Which ever the recordId we are giving that record data will be reffered in the page 
+
+
+-->
+<apex:page standardController="Account">
+    <apex:sectionHeader title="Account" subTitle="New Account" help="/apex/Test_Page" />
+    <apex:form >
+    <apex:pageBlock title="Account Edit" >
+    	<apex:pageBlockButtons location="top">
+            <apex:commandButton value="Save" action="{!save}" />
+            <apex:commandButton value="create" action="{!create}" />
+            <apex:commandButton value="SaveNew" action="{!quicksave}" />
+            <apex:commandButton value="Cancel" action="{!cancel}" />
+          <!--  <apex:commandButton value="List" action="{!listview}" /> -->
+            <apex:commandButton value="Edit" action="{!edit}" />
+            <apex:commandButton value="Delete" action="{!delete}" />
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="Basic Info" collapsible="false">
+            <apex:inputField value="{!Account.Name}" />
+            <apex:inputField value="{!Account.Industry}" />
+            <apex:inputField value="{!Account.Ownership}" />
+            <apex:inputField value="{!Account.Rating}" />
+            <apex:inputField value="{!Account.Type}" />
+            <apex:inputField value="{!Account.AnnualRevenue}" />
+            <apex:inputField value="{!Account.Email__c}" />
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,38 @@
+<!--
+Apex:RelatedList : 
+1. This component is used to display the corresponding child records of the given parent .
+2. Attributes :
+a. PageSize : 
+1. This will specify how many child records should be displayed  on the page 
+2. Default value is 5 , we can modify as your requirement 
+
+b. subject : 
+1. It will take the Id of the parentrecord
+2. Id of the parent record whose child records you want to display will be passed as subject.
+3. If we dont the pass the parentId as subject, then what ever the recordId we have passed in
+the url of the page ,that will be considered as parentId
+
+c. list : 
+1. it is name of the child relation name .
+2. If you give the child relation name of  the child object whose data you want to display.
+-->
+
+<apex:page standardController="Account">
+    <apex:sectionHeader title="Account" subTitle="{!Account.Name}" />
+    <apex:form >
+        <apex:pageBlock title="{!Account.Name}" >
+           
+                <apex:pageBlockSection >
+                    <apex:outputField value="{!Account.Name}" />
+                    <apex:outputField value="{!Account.Industry}" />
+                    <apex:outputField value="{!Account.Phone}" />
+                    <apex:outputField value="{!Account.Rating}" />
+                </apex:pageBlockSection>
+          
+        </apex:pageBlock>
+    </apex:form>
+    <apex:relatedList list="Contacts" pagesize="3" />
+    <apex:relatedList list="Opportunities"  />
+    <apex:relatedList list="Cases" subject="{!'0016F00002Lq7bG'}" /> 
+    
+</apex:page>

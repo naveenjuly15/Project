@@ -1,0 +1,239 @@
+<apex:page >
+    <!--
+    Set : 
+    ----
+    1. Set is a collection of simillar elements .
+    2. Size of the set can grow or decrease based on run time requirement.
+    3. Set will not accept duplicate values .
+    4. Set will not maintain insertion order.
+    5. Syntax : 
+    	Set<DataType>()
+    	Set<DataType>(List)
+        Set<DataType>(Set)
+
+		Example : 
+		Set<Integer> ages ;
+		Set<String> names ;
+		Set<Decimal> salaries;
+		Set<Account> accounts;
+		set<Contact> contacts;
+		
+	6. How to initialize the set 
+		Set<Integer> ages =new Set<Integer>();
+		Set<String> names =new Set<String>();
+		Set<Account> accounts =new Set<Account>();
+
+	7. Assiging the values to set to set statically.
+	   Set<Integer> ages =new Set<Integer>{10,20,30,40};
+	   Set<String> names =new Set<String>{'Sam','Ram','Kiran'};
+
+	8. Methods : 
+		a. size()  : 
+			1. This will return no of elements in the set .
+			Example : 
+			Set<Integer> ages =new Set<Integer>{10,20,30};
+			Integer count =ages.size();
+			System.debug(count); //  3
+
+		b. clear() : 
+		   This will remove all the elements from the set .
+		   Example : 
+		   Set<Integer> ages =new Set<Integer>{10,20,30};
+		   Integer count =ages.size(); // 3
+		   ages.clear();
+		   Integer size =ages.size();
+		   System.debug(size); //0
+
+		c. isEmpty() :
+		   This will return true ,if the set is empty .
+		   Example:
+		   Set<Integer> ages =new Set<Integer>{10,20,30};
+		   Boolean flag =ages.isEmpty();
+		   System.debug(flag); false 
+		   ages.clear();
+		   Blooean flag2 =ages.isEmpty();
+		   System.debug(flag2); true
+
+		4. contains(ele) : 
+		   This method will return true ,if the set contains the given element.
+
+		   Example
+		   Set<Integer> ages =new Set<Integer>{10,20,30,30,40};
+		   Note : If we add duplicate values ,old value will be replaced with new value.
+		   Boolean flag =ages.contains(10);
+		   System.debug(flag); true
+           Boolean flag2 =ages.contains(90);
+		   System.debug(flag2);// false
+
+		5. containsAll(listofelements) : 
+		   This will return true ,if the set contains all the element in given list.
+		    
+		   Example : 
+		   Set<Integer> ages = new Set<Integer>{10,20,30,40,50};
+		   List<Integer> values =new List<Integer>{10,20,30};
+		   List<Integer> myData =new List<Integer>{10,20,30,90,99};
+		   Boolean flag1 =ages.containsAll(values);
+		   System.debug(flag1); true
+		   Boolean flag2 =ages.containsAll(myData);
+		   System.debug(flag2); // false
+
+		6. containsAll(setofelements)
+			This will return true if the set contains the all the elements in the given set.
+
+			Example 
+			Set<Integer> ages =new Set<Integer>{10,20,30,40,50};
+			Set<Integer> values =new Set<Integer>{10,20,30};
+			Set<Integer> myData =new Set<Integer>{10,20,90,20};
+			Boolean flag1 =ages.containsAll(values);
+			System.debug(flag1); true
+			Boolean flag2 =ages.containsAll(myData);
+			System.debug(flag2); false
+
+		7. remove(ele) : 
+		   This will remove the given element from the set .
+		   
+			Example : 
+			Set<Intege> ages =new Set<Integer>{10,20,30,40,50};
+			ages.remove(10);
+			System.debug(ages); // 20,30,40,50
+			ages.remove(40);
+			System.debug(ages); // 20,30,50
+
+		8. removeAll(listofelemets) :
+		   This method will remove all the given list of elements from the set 
+			
+		   Example : 
+		   Set<Integer> ages =new Set<Integer>{10,20,30,40,50};
+		   List<Integer> values =new List<Integer>{10,20,30,90};
+		   ages.removeAll(values);
+		   System.debug(ages); // 40,50
+
+		9. removeAll(Setofelements) : 
+		   This method will remove all the given set of elemens from the set .
+			
+		   Example :
+		   Set<Integer> ages =new Set<Integer>{10,20,30,40,50};
+		   Set<Integer> values =new Set<Integer>{10,20,30,90};
+		   ages.removeAll(values);
+		   System.debug(ages);  // 40,50
+
+		10. retainAll(listOfElementsToRetain)
+			This will keep the common elements in the given set and list and remove rest of 
+			the elements .
+		    Example : 
+			Set<Integer> ages =new Set<Integer>{10,20,30,40,50};
+		    List<Integer> values =new List<Integer>{10,20,30,90};
+		    ages.retainAll(values);
+		    System.debug(ages); //  {10,20,30}
+
+		11. retainAll(setofElements):
+			This will keep the common elements in the given sets and remove rest of 
+			the elements .
+		    Example : 
+			Set<Integer> ages =new Set<Integer>{10,20,30,40,50};
+		    Set<Integer> values =new Set<Integer>{10,20,30,90};
+		    ages.retainAll(values);
+		    System.debug(ages); //  {10,20,30}
+
+		12. add(ele) : 
+			This method will add new element to the set .
+			
+			Example : 
+			Set<Integer> ages =new Set<Integer>();
+			ages.add(10);
+			ages.add(90);
+			ages.add(30);
+			System.debug(ages); {10,20,30}
+
+		13. addAll(list) : 
+			This will method add all the list of elements to the set 
+			
+			Example : 
+			List<Integer> values =new List<Integer>{10,20,30,40};
+			Set<Integer> ages =new Set<Integer>{10,20,90};
+			ages.addAll(values);
+			System.debug(ages);  {10,20,30,40,90}
+
+		14. addAll(set) : 
+			This will add set of elements to the set 
+			
+			Example : 
+			Set<Integer> values =new Set<Integer>{10,20,30,40};
+			Set<Integer> ages =new Set<Integer>{10,20,90};
+			ages.addAll(values);
+			System.debug(ages);  {10,20,30,40,90}
+
+		15. equals(set) : 
+		    This will return true if given sets are equals.
+
+	Examples : 
+	1. Create set to cities  and add  Hyd ,Ban,che,Che,pune :
+		Set<String> cities =new Set<String>();
+		cities.add('Hyd');
+		cities.add('Ban');
+		cities.add('Che');
+		cities.add('Che');
+		cities.add('Pune');
+	2. Remove che from the set 
+		cities.remove('che');
+	3. Check pune is in the set 
+		Boolean flag=cities.contains('Pune');
+	4. clear all the elements 
+		cities.clear();
+	5. Create  list of names  Bombay,Noida ,NCR  and add list to the set 
+		List<String> names =new List<String>{'Bombay','Noida','NCR'};
+		cities.addAll(names);
+	6. Check weather set contains NCR,Noida
+		Set<String> myPlaces =new Set<String>{'NCR','Noida'};
+		Boolean flag =cities.conainsAll(myPlaces);
+	7. Print count of no of elements in the set.
+		Integer count =cities.size();
+	8. remove myPlaces from the set 
+		cities.removeAll(myPlaces);
+
+	Example : 
+	1. Create a List of Accounts with following data 
+		Name	Industry	 Phone 
+		Wipro	Banking		 1111
+		TCS		Energy		 2222
+		Dell	Banking		 3333
+		Capital	Energy		 3333
+		List<Account> accounts =new List<Account>();
+		Account a1= new Account(Name='Wipro',Industry='Banking',Phone='1111');
+		Account a2= new Account(Name='TCS',Industry='Energy',Phone='2222');
+		accounts.add(a1);
+		accounts.add(a2);
+	A.  fetch all the accounts whoes industry is Banking  and put them in a set .
+		Set<Account> bankingAccounts =new Set<Account>();
+		for(Account a : accounts){
+			if(a.industry =='Banking'){
+				bankingAccouns.add(a);
+			}
+		}
+	b.  Fetch all the accounts whose indsutry is Energy and put their account names in set .
+		Set<String> names =new Set<String>();
+		for(Account a: accounts){
+			if(a.industry =='Energy'){
+				names.add(a.name);
+			}
+		}
+	c.  Fetch all the unique phone numbers form the list of accounts.
+		Set<String> accPhones =new Set<String>();
+		for(Account a: accounts){
+			accPhones.add(a.phone);
+		}
+	Example :3 
+	1. Create a List of Opportunities .
+		List<Opportunity> optyLists=new List<Opportunity>();
+	2, If the stagename is closed won them put them in  a seprate set .
+		Set<Opportunity> wonSet=new Set<Opportunity>();
+		for(Opportunity op: optyLists){
+			if(op.stageName=='Closed won'){
+				wonset.add(op);
+			}
+		}
+	3. If the closeDate is more than 15 days then put them in a separate set .
+	4. If the LeadSource is email put thier opportunity amount in a list .
+		
+    -->
+</apex:page>

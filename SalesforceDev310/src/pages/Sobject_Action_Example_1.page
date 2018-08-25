@@ -1,0 +1,18 @@
+<apex:page standardController="Opportunity">
+    <apex:sectionHeader title="Opportunity" subtitle="New Opportunity" help="/apex/Test_Page" />
+    <apex:form >
+    	<apex:pageBlock title="Opportunity">
+        	<apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="SaveNew" action="{!quicksave}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Opportuitiy Info">
+                <apex:inputField value="{!opportunity.Name}" />
+                <apex:inputField value="{!opportunity.StageName}" />
+                <apex:inputField value="{!opportunity.Type}" />
+                <apex:inputField value="{!Opportunity.Amount}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

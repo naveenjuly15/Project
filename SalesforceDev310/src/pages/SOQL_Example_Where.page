@@ -1,0 +1,17 @@
+<apex:page controller="SOQL_Where_Example">
+    <apex:form >
+    	<apex:pageBlock title="SOQL_Where" id="one">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Energy" action="{!energyData}" reRender="one" />
+                <apex:commandButton value="Hot" action="{!hotRecords}" reRender="one" />
+                <apex:commandButton value="AnnualRevenue" action="{!annualLess}" reRender="one" />
+            </apex:pageBlockButtons>
+        	<apex:pageBlockTable value="{!accounts}" var="a">
+                <apex:column value="{!a.name}" />
+                <apex:column value="{!a.industry}" />
+                <apex:column value="{!a.phone}" />
+                <apex:column value="{!a.rating}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

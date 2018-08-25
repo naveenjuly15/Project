@@ -1,0 +1,9 @@
+<apex:page >
+    <Apex:form >
+    	<apex:pageBlock title="Example">
+        	<apex:pageblockSection >
+            	This is a exmple
+            </apex:pageblockSection>
+        </apex:pageBlock>
+    </Apex:form>
+</apex:page>

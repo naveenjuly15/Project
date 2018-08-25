@@ -1,0 +1,16 @@
+<apex:page >
+    Apex:commandLink: 
+    1. This will create link
+    2. This should be a child component of apex:form
+    3. Attributes 
+    	a. value : 
+    		1. It is a string value .
+    		2. Link will be created with this labelname which is given as value.
+    	b. action : 
+    		1. When we click on the link what is the action that need to be performed.
+    		2. It can be a method form apex class or url of the page 
+    <apex:form >
+        <apex:commandLink value="Submit" /> <br/><br/>
+        <apex:commandLink value="Cancel" action="/apex/Test_Demo" />
+    </apex:form>
+</apex:page>

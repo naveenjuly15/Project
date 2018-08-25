@@ -1,0 +1,75 @@
+<apex:page >
+    Custom Settings:
+    -----------------
+    1. Custom Setting is also like a custom object.
+    2. It will store the data in the salesforce.
+    3. Any data stored to custom setting will be retrived without writing soql query.
+    4. There are two types of custom setting 
+    	a. List 
+    	b. Hierarchy
+    5. How to enable custom settings :
+    	Setup
+    	|--->Adminster 
+    		 |---> Data Management
+    			   |--->Schema Settings 
+    					|--->Enable the toggle.
+    
+    6. How to create List custom setting :
+    	Setup
+    	|--->Build
+    		 |--->Develop
+    			  |---> Custom Settings
+    					|---> New 
+    
+    	Step 1: Enter Name : Capital 
+    	Step 2: Enter Label: Capital 
+    	Step 3: Choose Custom Setting Type : List 
+    	Step 4: Save 
+    	Step 5: Create Custom Fields : Salary ,Phone
+    	Step 6: Click on Manage button and enter the data 
+    	Note : By Default every List custom setting will have name field.
+    	
+    7. How to fetch the data from list customsetting 
+    	a. getAll() : This method will return all the records in the custom setting in the form of Map
+    	  <!-- Map<Name,CustomSetting> -->
+    		where name field is the key and custom setting is the value
+       	 <!--
+			Map<String,Capital__c>  custMap=Capital__c.getAll();
+            System.debug(custMap.keySet());
+            Capital__c cap=custMap.get('Satish');
+            System.debug(cap.Name);
+            System.debug(cap.Salary__c);
+            System.debug(cap.Phone__c);
+		 -->
+    
+    	8. Hierarchy Custom Settings : 
+    		a. This is used to store the different data for different profile and users 
+    		b.How to create Hierarchy custom setting :
+            Setup
+            |--->Build
+                 |--->Develop
+                      |---> Custom Settings
+                            |---> New 
+        
+            Step 1: Enter Name : Book 
+            Step 2: Enter Label: Book 
+            Step 3: Choose Custom Setting Type : Hierarchy 
+            Step 4: Save 
+            Step 5: Create Custom Fields : Price ,Author
+            Step 6: Click on Manage button and enter the data 
+    				a. Default values for organization : 
+    					Author Name : Chetan
+    					Price		: 10000
+    
+    		Step 7: Click on New 
+    				Choose : Profile as System Admin 
+    				Author Name : Kiran 
+    				Price 		: 400000
+            Note : By Default every List custom setting will have name field.
+    
+    		Q: How to fetch the data 
+    			a.getInstance(userId/ProfileId) :This will return the data based on profile or user
+                Book__C bk=Book__c.getInstance(UserInfo.getUserId());
+                System.debug('Name:'+bk.AuthorName__c);
+                System.debug('Price:'+bk.price__c);
+</apex:page>

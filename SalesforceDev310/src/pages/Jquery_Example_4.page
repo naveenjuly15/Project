@@ -1,0 +1,24 @@
+<apex:page >
+     <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-1.8.3.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-ui-1.9.2.custom.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Jquery,'jquery/js/jquery-ui-1.9.2.custom.min.js')}" />
+    <script>
+    	var j$=jQuery.noConflict();
+    	j$(document).ready(function(){
+            j$('[Id$=but]').click(function(){
+            	var aval=j$('[Id$=aval]').val();
+                var bval=j$('[Id$=bval]').val();
+                var result=parseInt(aval)+parseInt(bval);
+                j$('[Id$=res]').val(result);
+            });
+        });
+     </script>
+    <apex:form >
+    	<apex:pageBlock title="Example">
+            Enter AValue : <apex:inputText id="aval" /> <br/><br/>
+            Enter BValue : <apex:inputText id="bval" /> <br/><br/>
+            Result :<apex:inputText id="res" />
+            <apex:commandButton value="Submit" id="but" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

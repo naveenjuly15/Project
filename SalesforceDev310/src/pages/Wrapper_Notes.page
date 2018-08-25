@@ -1,0 +1,85 @@
+<apex:page >
+    Wrapper : 
+    --------
+    1. Wrapper classes are used to create custom datatypes .
+    2. It is also an apex class.
+    3. Wrapper class conains only data memberes
+    4. Wrapper class can contain simillar types and dis-simllar datatypes.
+    Example : 
+    public class Student{
+    	public String name;
+    	public Integer age;
+    	public Decimal salary;
+    }
+    
+    ==> Student std =new Student();
+    Example : 
+    Create  a wrapper class Employee with name ,salary ,exp
+    public class Employee{
+    	public String name;
+    	public Decimal salary;
+    	public Decimal exp;
+    }
+    
+    Example :1
+    1. Create account_Wrapper class which contains one account and contact
+    2. Create a List of Account_Wrapper class and two elements to the list.
+    
+    SOl: public class Account_Wrapper {
+    		public Account acc ;
+    		public Contact con;
+    	 }
+    <!--
+    	List<Account_Wrapper>  accounts =new List<Account_Wrapper>();
+    	Account_Wrapper aw =new Account_Wrapper();
+        aw.acc=new Account();
+    	aw.acc.Name='Wipro';
+    	aw.acc.Phone='123';
+    	aw.con=new Contact();
+    	aw.con.LastName='Myla';
+    	aw.con.FirstName='Satish';
+    	accounts.add(aw);
+		
+    Example 2: 
+    1. Create a wrapper class AccountWrapper with account and opportunity as datamembers 
+    2. Create a list of AccountWrapper and add new elements
+    
+    public class AccountWrapper {
+    	public Account acc ;
+    	public Opportunity opty;
+    }
+    
+    List<AccountWrapper> accounts =new List<AccountWrapper>();
+	AccountWrapper aw =new AccountWrapper();
+	aw.acc=new Account();
+	aw.opty=new Opportunity();
+	accounts.add(aw);
+
+	==> Create a map with account name as key and Opportunity as value.
+		Map<String,Opportunity> accMap =new Map<String,Opportunity>();
+		for(AccountWrapper aw :accounts){
+			accMap.put(aw.acc.Name,aw.opty);
+		}
+
+	==> Create a map with accountid as key and AccountWrapper as value.
+		Map<Id,AccountWrapper> accMap =new Map<Id,AccountWrapper>();
+		for(AccountWrapper aw :accounts){
+			accMap.put(aw.acc.Id,aw);
+		}
+
+	 ==> Create a wrapper class which contain  Account ,List of contacts and List of opportunities
+		public class MyWrapper{
+			public Account acc;
+			public List<Contact> cons;
+			public List<Opportunity> optyList;
+		}
+
+	  ==> List<MyWrapper> myList 
+	  ==> Create a map with account Name as key and List of contact as value .
+		  Map<String,List<Contact>> accMap =new Map<String,List<Contact>>();
+		  for(MyWrapper m:myList){
+				accMap.put(m.acc.Name,m.cons);
+		  }
+	  ==> Create a map with account name as key and list of opportunities as value,.
+	-->
+</apex:page>

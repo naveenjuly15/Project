@@ -1,0 +1,36 @@
+<apex:page controller="Map_Field_Dependency">
+    <style>
+    	.box{
+        	width:100px;
+        }
+    </style>
+    <!-- 
+		actionSupport : When an event is occured on the element ,we want to invoke apex class 
+					    method then we define actionSupport with in the component 
+		<apex:inputText >
+			<apex:actionSupport event="onchange" action="" />
+		</apex:inputText>
+		<apex:selectList>
+			<apex:actionSupport event="" action="" />
+		</apex:selectList>
+	-->
+    <apex:form >
+    	<apex:pageBlock title="Field Dependency">
+        	<apex:pageBlockSection columns="1">
+            	<apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Cities" />
+                    <apex:selectList size="1" value="{!citySelected}" styleClass="box">
+                        <apex:selectOptions value="{!cities}" />
+                        <apex:actionSupport event="onchange" action="{!getData}" reRender="one" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Places" />
+                    <apex:selectList size="1" id="one" styleClass="box">
+                        <apex:selectOptions value="{!places}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

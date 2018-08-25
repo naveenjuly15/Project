@@ -1,0 +1,17 @@
+<apex:page >
+    Messaging.InboundEmailHandler: 
+    -----------------------------
+    1. InboundEmailHandler  is a interface defined in the messaging namespace.
+    2. Any class which want to handle the emails sent from the external system has to implement this interface.
+    3. This class has one method 
+    	a.Messaging.InboundEmailResult handleInboundEmail(Messaging.InboundEmail ,Messaging.InboundEnvelope)
+    	b. This method contains the logic to handle the inbound emails 
+    	c. Messaging.InboundEmailResult : 
+    	   1. This class contains the status of the email handled.
+    	   2. success : if the email is handled successfully then  success is set as true
+    	d. Messaging.InboundEmail : 
+    	   1. This class contains the email recevied from the external sytem.
+    	  
+        e. Messaging.InboundEnvelope : 
+    	   1. This class contains the toaddress and fromAddress.
+</apex:page>

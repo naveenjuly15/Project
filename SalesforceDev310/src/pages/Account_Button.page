@@ -1,0 +1,19 @@
+<apex:page standardController="Account" extensions="Account_Button_Example">
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock title="Account">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Example">
+                <apex:inputField value="{!Account.Name}" />
+                <apex:inputField value="{!Account.Phone}" />
+                <apex:inputField value="{!Account.Industry}" />
+                <apex:inputField value="{!Account.rating}" />
+                <apex:inputField value="{!Account.Type}" />
+                <apex:inputField value="{!Account.Ownership}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

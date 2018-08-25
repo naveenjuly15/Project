@@ -1,0 +1,4 @@
+<apex:page controller="Custom_Example">
+    <c:dataList records="{!accounts}" columns="{!accFields}" />
+    <c:dataList records="{!contacts}" columns="{!conFields}" />
+</apex:page>

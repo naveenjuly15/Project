@@ -1,0 +1,26 @@
+<apex:page controller="Apex_Page_Message">
+    <apex:pageMessages />
+    Message : 
+    1. it is a predefined apex class .
+    2. It is defined under the namespace of Apexpages
+    3. This is used to generate the messages on the pages
+    4. Syntax : 
+    	Apexpages.Message(param1,param2)
+        Param1: Severity : 
+    		  : This will specify the severity 
+    		  : Possible values are CONFIRM, WARNING ,ERROR,INFO
+    
+    	Param2 : Message what we want to print 
+    
+    Example : 
+    Apexpages.Message msg =new Apexpages.Message(Apexpages.Severity.ERROR','Error Message')
+    
+    5. Once the message is created it should be added to Apexpages.
+    	Apexpages.addMessage(msg)
+    
+    Note : If you want to include the messages generated in the Apex class then  we have to add 
+  	<!--   <apex:pageMessages /> in the vF page -->
+    
+    
+    
+</apex:page>

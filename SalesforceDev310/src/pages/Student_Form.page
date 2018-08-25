@@ -1,0 +1,24 @@
+<apex:page controller="Student_Form">
+    <apex:form >
+    	<apex:pageBlock title="Student">
+        	<apex:pageBlockButtons location="top">
+                <apex:commandButton value="Submit" />
+            </apex:pageBlockButtons>
+            Name : <apex:inputText value="{!name}" /> <br/>
+            Age  : <apex:inputText value="{!age}" /> <br/>
+            City : <apex:selectList size="1" value="{!city}">
+            			<apex:selectOption itemLabel="-None-" itemValue="none" />
+            			<apex:selectOption itemLabel="Hyd" itemValue="Hyd" />
+            			<apex:selectOption itemLabel="Hyd" itemValue="Hyd" />
+            	    </apex:selectList> <br/>
+            Address: <apex:inputTextArea rows="3" cols="40" /> <br/>
+            Languages: <apex:selectCheckboxes value="{!languages}">
+            				<apex:selectOption itemLabel="English" itemValue="English" />
+            				<apex:selectOption itemLabel="Hindi" itemValue="Hindi" />
+            		   </apex:selectCheckboxes>
+            
+            Enter Age<Apex:outputLabel value="{!age}" />
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

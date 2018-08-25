@@ -1,0 +1,65 @@
+<apex:page >
+    <!--
+    SOQL :
+    ------
+    1. Salesforce object Query Language .
+    2. It is used to fetch the data from the sobject.
+    3. Query : Query is statement written to retrive the data from the sobject.
+    4. SOQL will return you List<Sobject>
+	5. Syntax : 
+	   select fields from sobject
+	 Example : 
+	  Select Name,Phone,Industry from Account
+	Example : 
+	1.write a query to fetch data from opportunity 
+		select Name,Amount,StageName,closeDate from Opportunity
+    2.Write a query to fetch data from case 
+		select Subject,Priority,Status from Case
+    3.Write a query to fetch data from contact 
+		select lastName,firstName,phone,email from Contact
+    4.Write a query to fetch data from user.
+		select lastname,firstname,phone,email from user
+ 	5. Select name,City__c,Status__s from Customer__c
+
+	6. Write a query to fetch data from Payment__C
+		select Name,Mode__C,Amount__c from Payment__c
+
+	Static : 
+	List<Sobject> result =[select fields from Sobject ]
+
+	Example : 
+	List<Account> accounts =[select Name,Phone,industry ,rating from Account];
+
+	Dynamic : 
+	string query ='select fields from Sobject';
+	List<Sobject> result =Database.query(query);
+	
+	Topics:
+1. Basic Query Format 
+2. Limit 
+3. offset 
+4. Orderby
+5. Where conditions 
+6. Multiple conditions 
+7. IN Operator 
+8. IN List<Sobject>
+9. Like
+10. Date Functions 
+11. Sub queries 
+12. Parent _child 
+13. Child _parent 
+14. Parent with mutiple childs 
+15. Child with multiple Parents
+16. isDeleted 
+17. All Rows
+18. For update 
+19. Index fields 
+20. Dynamic Soql 
+21. Query forming 
+22. Iteration ,Iterator
+23  Database.queryLocator 
+24. Database.getQueryLocator
+25. What are soql limits 
+26. How to over come these limi
+   -->
+</apex:page>

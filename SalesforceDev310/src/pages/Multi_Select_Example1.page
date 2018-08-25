@@ -1,0 +1,31 @@
+<apex:page controller="Multi_Select_Example">
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+        }
+        .myPanel{
+            width:500px;
+            height:300px;
+        }
+    </style>
+    <apex:form >
+        <apex:pageBlock title="Multi_Select">
+            <apex:panelGrid columns="3" styleClass="myPanel" id="one">
+                <apex:selectList multiselect="true" styleClass="box" value="{!addFields}">
+                    <apex:selectOptions value="{!leftSide}" />
+                </apex:selectList>
+                <apex:panelGrid columns="1">
+                    <br/><br/>
+                    <apex:commandButton value="add" action="{!add}" reRender="one" />
+                    <br/><br/>
+                    <apex:commandButton value="del" action="{!removeEle}" reRender="one"/>
+                    
+                </apex:panelGrid>
+                <apex:selectList multiselect="true" styleClass="box" value="{!removeFields}">
+                    <apex:selectOptions value="{!rightSide}" />
+                </apex:selectList>
+            </apex:panelGrid>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

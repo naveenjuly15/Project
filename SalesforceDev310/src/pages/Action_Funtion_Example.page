@@ -1,0 +1,26 @@
+<apex:page controller="Account_Create" id="page">
+    <apex:form id="fm">
+    	<apex:pageBlock title="Field_Dependency" id="pb">
+            <script>
+            	function show(){
+                	var name=document.getElementById('page:fm:pb:one:name').value;
+                    var indus=document.getElementById('page:fm:pb:one:indus').value;
+                    var phone=document.getElementById('page:fm:pb:one:phone').value;
+                    var myId=document.getElementById('page:fm:pb:one:myId').value;
+                    if(indus!='' && name!='' && phone!=''&&myId!=''){
+                    	fun();
+                    }else{
+                    	alert('Enter Name,Phone ,Industry');
+                    }
+                }
+            </script>
+            <apex:actionFunction name="fun" action="{!create}" />
+        	<apex:pageBlockSection columns="1" id="one">
+                <apex:inputText value="{!acc.name}" id="name" onchange="show()"/>
+                <apex:inputText value="{!acc.industry}" id="indus" onchange="show()"/>
+                <apex:inputText value="{!acc.phone}" id="phone" onchange="show()" />
+                <apex:inputText value="{!acc.MyId__c}" id="myId" onchange="show()" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

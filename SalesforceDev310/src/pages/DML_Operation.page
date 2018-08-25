@@ -1,0 +1,374 @@
+<apex:page >
+    DML : 
+    1. Data Manipulation Language .
+    2. These are used to perform changes on the data in the sobject.
+    3. Type of DML operations 
+    	Insert ,update ,upsert, delete ,undelete ,merge
+    
+   4. When ever performing a DML operations all the validation rules and required fields are verified.
+    
+    5. insert  : 
+    	a. This is used to insert new record into sobject.
+    	b. Syntax:  insert sobject/Sobject[]
+    	    Example : 
+    		1. Create new Account record.
+    			Account acc =new Account();
+    			acc.Name='Wipro';
+    			acc.Industry='Banking';
+    			acc.Phone='040-12345';
+    			acc.Rating='Hot';
+    			acc.Ownership='Private';
+    			acc.AnnualRevenue=200000;
+    			acc.Active__c='Yes';
+    			insert acc;
+    
+    		2. Create a new Lead Record. (LastName,FirstName,Phone,Email,Industry,Rating,Company)
+    			Lead l=new Lead();
+    			l.lastName='Myla';
+    			l.firstName='Satish';
+    			l.email='abc@xyz.com';
+    			l.phone='040-12345';
+    			l.company='Wipro';
+    			l.rating='Hot';
+    			insert l;
+    		
+    		3. Create a new Opportunity  Name,StageName,CloseDate,Type,LeadSource,Amount
+    
+    			Opportunity op =new Opportunity();
+    			op.Name='Salesforce Training';
+    			op.StageName='Closed Won';
+    			op.CloseDate=System.today()+15;
+    			op.Amount=10000;
+    			op.Type='New Customer';
+    			op.LeadSource='Email';
+    			insert op;
+    
+    		4. Create a new Case  : Subject,Priority,origin,status ,Description
+    
+    			Case c=new Case();
+    			c.subject='Testing';
+    			c.status='New';
+    			c.Origin='Email';
+    			c.priority='Normal';
+    			c.Description='Harware instalation Issue';
+    			insert c;
+    
+    		5 . Create a new Group
+    			Group g=new Group();
+    			g.Name='ICICI HRTeam';
+    			g.Type='Regular';
+    			insert g;
+    
+    		6. Create a contact for an account whose name is wipro
+    			Note : if lookup or master -detail field is a standard field then we are suppose 
+    				   add id after the field name .
+    
+    			Account acc =[select Id ,Name from Account where name='Wipro'];
+    			Contact con=new Contact();
+    			con.LastName='Myla';
+    			con.FirstName='Satish';
+    			con.Phone='12234';
+    			con.AccountId=acc.Id; //  Contact object has Lookup field : Account
+    			insert con;
+    
+    		7. Create a new opportuity for an account whose name is Dell
+
+    Account acc =[select id,name from Account where name='Dell'];
+    			Opportunity op=new Opportunity();
+    			op.Name=acc.Name;
+    			op.stageName='Prospecting';
+    			op.closeDate=System.today()+10;
+    			op.AccountId=acc.Id;
+    			insert op;
+    
+    		8. Create a new Contact with wilson as owner of the record.
+    			User u =[select id from user where firstName='Wilson'];
+    			Contact con=new Contact();
+    			con.LastName='Myla';
+    			con.FirstName='Satish';
+    			con.OwnerId=u.Id;
+    			insert con;
+    
+    		9. Create a new Lead with  queue :HydTeam as owner of the lead.
+    			Group g=[select id from Group where type='Queue' and name='HydTeam'];
+    			Lead l =new Lead();
+    			l.lastName='K';
+    			l.firstName='Sravan';
+    			l.company='TCS';
+    			l.phone='020-11111';
+    			l.ownerId=g.id;
+    			insert l;
+    
+    		10. Create a task for the Account .
+    			Account acc =[select id from Account Limit 1];
+    			User u=[select id from User where firstName='Wilson'];
+    			Task t =new Task();
+    			t.Subject='Schedule a call';
+    			t.WhatId=acc.Id;
+    			t.Priority='Normal';
+    			t.status='Not Started';
+    			t.ActivityDate=System.today()+15;
+    			t.ownerId=u.id;
+    			insert t;
+    
+    		11. Create a task for Opportunity 
+    			 Task should be associated with contact whose lastname is myla. ( WhoId)
+    			 Task should be assigned to opportunity owner
+    			 Opportunity op=[select id,ownerId from Opportuity limit 1];
+    			 Contact c=[select id from Contact where lastname='myla'];
+    			 Task t =new Task();
+    		     t.subject='Fix Appointment';
+    			 t.status='Not Started';
+    			 t.ActivityDate=System.today()+3;
+    			 t.Priority='Normal';
+    			 t.WhatId=op.Id;
+    			 t.whoId=c.Id;
+    			 t.ownerId=op.ownerId;
+    			 insert t;
+    
+    		12. Create a opportunity with OpportunityLineItem
+    			Product2 prod=[select id from Product2 where name='SLA: Gold'];
+				PriceBook2 book=[select id from PriceBook2 where name='Standard'];
+
+				PriceBookEntry entry=[select id,unitprice from PricebookEntry where Product2Id=:prod.Id 
+    																and priceBook2Id=:book.Id ];
+				System.debug('Price :'+entry.unitprice);
+
+				Opportunity op=[select id from Opportunity where id='0066F00000sDfDo'];
+
+				OpportunityLineItem otm=new OpportunityLineItem();
+				otm.opportunityId=op.Id;
+				otm.PriceBookEntryId=entry.Id;
+				otm.Product2Id=prod.Id;
+				otm.quantity=10;
+				otm.UnitPrice=10000;
+				otm.ServiceDate=System.today()+10;
+				insert otm;
+			
+    		  Example : Quote with quoteLineItem
+    				  : Order with OrderLineItem
+    				  : Chatter with ChatterFeed
+    				  : Account with Event 
+    				  : Contact with Event 
+    				  : Case with solution 
+	
+    6. Bulk DML : 
+    	a. If you perform dml operation on group of records then we call it as Bulk DML operation 
+    		
+    		Example : Create new Accounts with the following data .
+    
+    		Name		Phone		Industry		Rating
+    		TCS			020-111		Banking			Hot
+    		Dell		040-222		Energy			Warm
+    		ItSlate		040-444		Banking			Cold
+    
+    		<!--
+				List<Account> accounts =new List<Account>();
+				Account a1=new Account();
+				a1.Name='TCS';
+				a1.Phone='020-111';
+				a1.Industry='Banking';
+				a1.Rating='Hot';
+				
+				Account a2=new Account();
+				a2.Name='Dell';
+				a2.Phone='040-222';
+				a2.Industry='Energy';
+				a2.Rating='Cold';
+
+				accounts.add(a1);
+				accounts.add(a2);
+				insert accounts;
+
+		Note : Bulk DML operation is performed on List/Array or records only .
+	   		 : DML on Set or Map is not allowed
+
+		Note : DML Operation Using insert keyword is atomic .
+			 : Atomic : If any one record in the list fails entire operation will fail.
+			
+    	Database: 
+    	a.It is a pre-defined apex class .
+    	b.This will list of methods wich are required to perform DML operation as atomic ,nonatomic
+    	c.It is defined under the namespace of System.
+    	d.This class contains some of the methods 
+    		1. insert(sobject[],flag)
+    		2. update(sobject[],flag)
+    		3. delete(Sobject[],flag)
+    		4. undelete(sobject[],flag)
+    		5. upsert(sobject[],flag)
+    		6. merge(sobject[],sobject)
+    		7. emptyRecyclebin()
+    		8. convertLead()
+    		9. getQueryLocator()
+    		10. executeBatch()
+    		11. rollback
+    
+    	Database :
+		------------
+    		1. It is a pre-defined namespace in the salesforce.
+    		2. It contains the classes required for Supporting DML operations 
+    		3. Some of the classes are 
+    			a. Database.SaveResult
+    			b. Database.DeleteResult
+    			c. Database.UpdateResult
+    			d. Database.MergeResult
+    			e. Database.Batchable
+    			f. Database.BatchableContext
+    			g. Database.QueryLocator
+    			h. Database.Error
+    
+    	Database.Error : 
+    	------------------
+    	1.Database is the namespace defined in the salesforce.
+    	2.Error is pre-defined apex class under the namespace if Database.
+    	3.This class contains all the information regarding the errors that are generated during the 
+    	  dml operations 
+    	4.This class has few methods to retrive the error information .	
+    		a. getFields() : 
+    			1. This method will return one of more fields on which the error has occured
+    			   during the dml operations 
+    			
+    			2. Syntax: String[] getFieds()
+    
+    		b. getMessage() :
+    			1. This method will return the error message that is generated during the dml operation
+    			2. Syntax : String getMessage()
+    
+    		c. getStatusCode() : 
+    			1. This will return code that specifies the type of error 
+    
+    
+    	Database.SaveResult:
+    	--------------------
+    	1. Database is a namespace 
+    	2. SaveResult is a pre-defined class.
+    	3. This class contain the information about the status of the DML operation of insert and update
+    	4. This class contains some of the methods to return the status of the DML operations.
+    		a. isSuccess() : 
+    			1. This will return true ,if the dml operation of insert or update is success .
+    			2. This will return false ,if the dml operation of insert or update fails
+    			3. Syntax: 
+    				Boolean isSuccess()
+    
+    		b. getId()  : 
+    			1. This will return Id of the record on which dml operation is performed.
+    			2. Syntax : 
+    				Id getId()
+    		c. getErrors() :
+    			1. In case if the dml operation failed,list of errors what we have recevied will 
+    				be returned
+    			2. Syntax : 
+    				 Database.Error[] getErrors()
+    			
+    	Database.insert(sobject[],flag) :
+		Database.insert(sobject,flag)
+    	-----------------------------------
+    	1. Database is a predefined apex class .
+    	2. This contains as static method insert 
+    	3. This method is used for inserting new records into database.
+    	4. If we give flag as true ,it is atomic .
+    	5. If we give flag as false ,it is non-atomic
+    	Example :
+    	List<Account> accounts =new List<Account>();
+		Account a1=new Account();
+		a1.Name='TCS';
+		a1.Phone='020-111';
+		a1.Industry='Banking';
+		a1.Rating='Hot';				
+		Account a2=new Account();
+		a2.Phone='040-222';
+		a2.Industry='Energy';
+		a2.Rating='Cold';
+		accounts.add(a1);
+		accounts.add(a2);
+				
+		Database.SaveResult[] result=Database.insert(accounts,false);
+
+		for(Database.SaveResult sr: result){
+    		if(sr.isSuccess()==true){
+        		System.debug('Record Inserted Successfull :'+sr.getId());
+    		}else{
+        		Database.Error[] errors =sr.getErrors();
+        		for(Database.Error er: errors){
+            		System.debug('DML Fields:'+er.getFields());
+            		System.debug('Message :'+er.getMessage());
+            		System.debug('Status :'+er.getStatusCode());
+        		}
+    		}
+		}
+		
+		Database.DMLOptions :
+		---------------------
+		1. Database is  pre-defined namespace.
+		2. DMLOptions is a pre-defined apex class in the database namespace.
+		3. DmlOptions Properties
+			a.assignmentRuleHeader
+				Specifies the assignment rule to be used when creating a case or lead.
+
+			b.allowFieldTruncation
+				Specifies the truncation behavior of large strings.
+
+			c.emailHeader
+			    Specifies additional information regarding the automatic email that gets 
+				 sent when an events occurs.
+
+			d. localeOptions
+				Specifies the language of any labels that are returned by Apex.
+
+			e. optAllOrNone
+				Specifies whether the operation allows for partial success.
+
+		DmlOptions.AssignmentRuleHeader
+		--------------------------------
+		1.AssignementRuleHeader is a predefined apex class in DMLOptions
+		2.This will speicfy the assignment rules that should be applied while making the dml operations
+		  on lead and case. 
+		3. It has two properties 
+			a. assignmentRuleId: Id of the assignment rule that should be applied 
+			b. useDefaultRule : 
+				1. It is a boolean value,when set as true,default standard assignment rule
+					should be applied on the lead/case
+
+
+		Example : 
+		1. Create  as new assignement Rule 
+			Setup
+			|--- Build 
+    			  |--Customize
+					 |---Lead 
+						 |---AssignmentRule
+							 |---New 
+			
+			Step1:	Enter Name : Portal leads 
+			Step2:	Select Active : True
+			Step3:	Save
+			Step4:  Add the rule and specify order 
+			Step5:  Condition : When LeadSource is Web then assign wilson as Owner 
+			Step6:  Save
+
+		2. Insert the leadRecord and apply assignment rules 
+			Step 1: Fetch Id of the assignment rule whose name is Portal users
+				AssignmentRule a=[select id from AssignmentRule where name='Portal users'];
+
+			Step 2: Create Instance of AssignmentRuleHeader
+				Database.DMLOptions dmo=new Database.DMLOptions();
+				dmo.assignmentRuleHeader.assignmentRuleId=a.id;
+
+			Step3: Insert the lead
+				Lead l=new Lead();
+				l.LastName='K';
+				l.FirstName='Kiran';
+				l.company='Testing';
+				l.leadSource='Web';
+				l.setOptions(dmo);
+				insert l;
+
+	Database.insert(sobject[],Database.DMLOPtions)
+	-----------------------------------------------
+	Database.DMLOPtions dm=new Database.DMLOptions();
+	dm.allowFieldTruncation=true;
+	dm.assignmentRuleHeader.assignmentRuleId='0001'
+	dm.allornone=false;
+	Database.insert(sobject[],dm)
+-->
+</apex:page>

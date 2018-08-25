@@ -1,0 +1,126 @@
+<apex:page >
+  visualforce : 
+  -------------
+  1. It is framework ,which is used to build sophisticated pages or Customer users interfaces  as per the business requirements.
+  2. This pages/appications are hosted on force.com lightning platform.
+  3. Visualforce pages consists of two elements 
+        a. Visualforce Markup
+        b. Visualforce Controllers 
+  4. Visualforce Markup  :
+        a. This will contain the visualforce tags and scripting elements which are supported by the browsers.
+        b. Visualforce components 
+            Example 
+             apex:componentName 
+             flow:componentName
+             analytics:componentName
+             chatter:componentName
+             chatterAnswers:componentName
+             ideas :componentName
+             knoweldege:componentName
+            
+        b. Scripting Elemnets : HTML,Javascript,Ajax,jqueyAngularjs,Node.js,backbone.js,bootstrap.......
+    
+   5. Visualforce Controller : 
+         a. These are group of statements which will specify what action should be performed when a user interacts with 
+            component on the Visualforce page .
+    
+         b. They may perform action on the data at the backend.
+    
+         c. There are three types of controllers 
+              1. StandardController 
+    
+              2. Controller 
+    
+              3. Extentions 
+    
+         d. StandardController :
+              1. When you want to reffer to the exact properties of given object then we use standardController .
+    
+              2. It can reffer to standard objects are custom objects 
+    
+         e. Controller   : 
+              1. if you want to define you own logic as per your business requirement then we define apex class as controler .
+    
+    
+         f. extentions  : 
+             1. When we want to use standard functionalities of any object and override with some of the functionalities with
+                custom logic then we use extentions .
+    
+    6. Force.com : Has Application Server: 
+                  a. We can run web applications and Enterprise applications 
+                  Example : Weblogic 
+    
+            Note:     WebServers are used for running web-applications \
+                      Example : Tomcat 
+    
+    
+    7. System Mode : 
+        When the program run in the system mode ,users profile,OWD ,Sharing Rules ,Security Model will not be taken into consideration.
+        He we be able access any data and perform any operation.
+    
+    8. User Mode : 
+        When we run the program in the User Mode ,users profiles,owd, Sharing Rules ,Security model will be taken into considerations .
+    What ever the data/operations are allowed for  the users only those he can perform .
+    
+    9. By default Visualforce pages will run on User Mode.
+            
+    10. Every visualforce page will end with .VFP (visualforce pag)
+    
+    11. Every element in the vf page should obey strict xml format .
+        a. Every opening tag should have corresponding closing tag 
+            Example : 1
+             opending :  <name> 
+             Closing:    </name>
+            Example :2
+              <name  />
+    
+        b. Inner elements should be closed first  before closing outer elements 
+             <College>
+                <Name>
+                    <LastName> Myla</LastName>
+                    <FirstName>Satish</FirstName>
+                 </Name>
+                 <Branch>CSE </Branch>
+                 <Name> CBIT</Name>
+            </College>
+    
+        c. Name of the opening and closing element should be same 
+    
+                <Name> </name> --->Error 
+                <Name></Name> ---->Correct
+                <name></name> ---->Correct
+                <NAME></NAME>
+    
+    12. comments : 
+         Which ever the statements we write in the comments will not be executed 
+         <!--
+            Comments 
+         -->
+    
+    13. Attributes  : 
+        Attributes are the properties of the components 
+        <Person height="5" name="kumar" age="40" color="white" salary="50000" ></Person>
+        |---Opened                                                                                 |--- Closed 
+  <!--  <apex:pageBlock title="Example" helpUrl="/apex/page" helptTitle="MyHelp??" tabstyle="Lead" />  -->
+          |         |                   |                     |          |                    |
+   Namespace    componentName           attribute             attribute   value               value
+    
+     
+    14. Which version of API we are using  :43.0 ===> Summer 18 
+    15. When we use visualforce pages 
+        a. When we want to override standard functionalites 
+    
+        b. When we want to override standard pages 
+    
+        c. when we want to override standard buttons 
+    
+        d .When we want to create custom buttons on standard pages 
+    
+        e. When we want to create side-bar components 
+    
+        f. When we want to override standard tabs 
+    
+        g. When we want to build custom tabs /pages 
+    
+    
+</apex:page>

@@ -1,0 +1,17 @@
+<apex:page controller="Offset_Example">
+    <apex:form >
+    	<apex:pageBlock title="Example" id="one">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Offset" action="{!setData}" reRender="one" />
+                <apex:commandButton value="Dynamic" action="{!invoke}" reRender="one" />
+                <apex:commandButton value="CallMe" action="{!callMe}" reRender="one" />
+                <apex:commandButton value="Invoke" action="{!invokeData}" reRender="one" />
+            </apex:pageBlockButtons>
+        	<apex:pageBlockTable value="{!accounts}" var="a">
+                <apex:column value="{!a.name}" />
+                <apex:column value="{!a.phone}" />
+                <apex:column value="{!a.industry}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,45 @@
+<apex:page >
+    Merge : 
+    -------
+    It will join two or more records into single record.
+    merge master duplicate 
+    
+    1. child records of duplicate record are re-assigned to master record.
+    2. Duplicate record is deleted.
+    
+    Example : 
+    Account acc1= new Account();
+    acc1.Name='Testing';
+    acc1.Phone='040-1234';
+    acc1.Industry='Banking';
+    insert acc1;
+    
+    Contact c1=new Contact();
+    c1.LastName='Myla';
+    c1.FirstName='Satish';
+    c1.Phone='1233';
+    c1.AccountId=acc1.Id;
+    insert c1;
+    
+    Account acc2= new Account();
+    acc2.Name='Testing';
+    acc2.Phone='040-19999';
+    acc2.Industry='Banking';
+    insert acc2;
+    
+    Contact c2=new Contact();
+    c2.LastName='M';
+    c2.FirstName='Kiran';
+    c2.Phone='1233';
+    c2.AccountId=acc2.Id;
+    insert c2;
+    
+    merge acc1 acc2;
+    
+    Child records of acc2 are re-assigned to acc1  and acc2 is deleted
+    
+    Merge master duplicate[] :
+    at max we can have two duplicate 
+    
+    
+</apex:page>

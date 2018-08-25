@@ -1,0 +1,18 @@
+<apex:page renderAs="pdf">    
+    <div style="width:100%">
+        <table style="width:90%">
+            <tr style="width:100%">
+                <td>
+                    To,<br/>
+                    Capital Info <br/>
+                    Ameerpet 
+                </td><br/><br/><br/>
+                <td style="align:right">
+                    From ,<br/>
+                    Wipro Technologies <br/>
+                    Hyd               
+                </td>
+            </tr>          
+        </table>       
+    </div>
+</apex:page>

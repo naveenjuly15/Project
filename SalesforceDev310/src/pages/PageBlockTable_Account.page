@@ -1,0 +1,24 @@
+<apex:page standardController="Account" recordSetVar="items">
+    <apex:form >
+    	<apex:pageBlock title="Account">
+        	<apex:pageBlockTable value="{!items}" var="a">
+            	<apex:column >
+                    <apex:inputCheckbox />
+                    <apex:facet name="header"><apex:inputCheckBox /></apex:facet>
+                </apex:column>
+                <apex:column headerValue="Action">
+                	<apex:commandLink action="{!URLFOR($Action.Account.Edit,a.id)}">Edit</apex:commandLink>
+                    &nbsp;|&nbsp;
+                    <apex:commandLink action="{!URLFOR($Action.Account.Delete,a.id)}">Del</apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Account Name">
+                    <apex:commandLink value="{!a.name}" action="/{!a.id}" />
+                </apex:column>
+                <apex:column value="{!a.industry}" />
+                <apex:column value="{!a.phone}" />
+                <apex:column value="{!a.rating}" />
+                <Apex:column value="{!a.type}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

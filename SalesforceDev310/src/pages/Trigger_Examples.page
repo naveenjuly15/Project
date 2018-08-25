@@ -1,0 +1,86 @@
+<apex:page >
+    Example 1: When ever a new lead is created Set LeadSource as Web ,status as Not Contacted
+    		   rating as warm.
+    		trigger example on Lead( before insert){
+    			for(Lead l:Trigger.new){
+    				l.leadsource='Web';
+    				l.status='Not Contacted';
+    				l.rating='Warm';
+    			}
+    		}
+    
+    Example 2: When ever a new Opportunity is created ,set stagename as Prospecting ,closeDate as 15 days 
+    		   from today, type as new Customer 
+    
+    		trigger example on Opportunity (before insert){
+    			for(Opportunity op : Trigger.New){
+    				op.stageName='Prospecting';
+    				op.closeDate=System.today()+15;
+    				op.type='New Customer';
+    			}
+    		}
+    
+    Example 3: When ever a new Case is created set the Subject as Hardware ,priority as Normal
+    		trigger example on Case(before insert){
+    			 for(Case c: Trigger.new){
+    				c.Subject='hardware';
+    				c.Priority='Noramal';
+    			}
+    		}
+    Example 4: When ever a new Account is created with industry as Banking create wilson as owner 
+    		   in indsutry is  other Banking then set Satish as owner.
+    		trigger demo on Account (before insert){
+    			User u1= [select id from User where firstName='Satish'];
+    			User u2 =[select id from user where firstname='Wilson'];
+    			for(Account a: Trigger.New){
+    				if(a.industry=='Banking'){
+    					a.ownerId=u2.id;
+    				}else{
+    					a.ownerId=u1.id;
+    				}
+    			}
+    		}
+        
+    Example 5: When ever a new lead is created with rating as Hot and leadSource as web then 
+    			assign HRTeam as owner else assing salesTeam as owner 
+    		
+    
+    		trigger example on Lead(before insert){
+    			Group g1 =[select id from Group where type='Queue' and name='Sales Team'];
+    			Group g2=[select id from Group where type='Queue' and name='HRTeam'];
+    			for(Lead l: Trigger.new){
+    				if(l.rating=='Hot' and leadsource=='Web'){
+    					l.ownerId=g1.id;
+    				}else{
+    					l.ownerId=g2.Id;
+    				}
+    			}
+    		}
+    
+    Example 6: On Lead object we have Lookup fields to User with field Name :Manager
+    		  When ever a lead is created send email to leads Manager 
+    		   Subject : Test Email 
+    		   Body  : Dear Customer ,
+    				   Thanks for showing intrest
+   <!-- 
+    		trigger example on Lead (before insert){
+    			 List<Id> userIds =new List<Id>();
+				 Map<Id,String> userMail =new Map<Id,Email>();
+					// fetch all the managerId's of the new leads which we are inserting 
+    			 for(Lead l: Trigger.new){
+    					userIds.add(l.Manager__c);	
+    			  }
+			// User Id is the key and his email address is the value in the map
+				 List<User> users =[select Id ,email from the user where id in:UserIds];
+				 for(User u : users){
+					usermail.put(u.id,u.email);
+				 }
+				 for(Lead l : Trigger.New){
+					 String email=userMail.get(l.Manager__c);
+					 String[] toadd=new String[]{email};
+					 Messaging.SingleEmailMessage msg =new Messaging.SingleEmailMessage();
+					 msg.setToAddresses(toadd);
+				 }
+    		} 
+    -->					
+</apex:page>

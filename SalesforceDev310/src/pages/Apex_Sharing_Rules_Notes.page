@@ -1,0 +1,35 @@
+<apex:page >
+    Apex Based Sharing : 
+    --------------------
+    1. Every object has corresponding sharing object.
+    2. In the sharing object all the sharing rules are stored 
+    Example : 
+    Object Name			ShareObject
+    ----------------------------------
+    Account				AccountShare
+    Contact				ContactShare
+    Opportunity			OpportunityShare
+    Lead				LeadShare
+    Customer__C			Customer__Share
+    Loan__c				Loan__Share
+    
+    3. When we want to share the record we need to know the following details 
+    	a. Which record you want to share 
+    	b. With whom you want to share 
+    	c. Why you want to share 
+    	d. With what access you want to share
+    
+    
+    StandardObject
+    Object			Which Record		With Whom			Why To Share	Access
+    Account			AccountId			UserOrGroupId		RowCause		AccountAccessLevel
+    Contact			ContactId			UserOrGroupId		RowCause		ContactAccessLevel
+    Opportunity		OpportunityId		UserOrGroupId		RowCause		OpportunityAccessLevel
+    
+    Custom Object 
+    Object			Which Record		With Whom			Why To Shar		Access
+    Customer__c		ParentId			UserOrGroupId		RowCause		AccessLevel
+    Loan__C			ParentId			UserOrGroupId		RowCause		AccessLevel
+    Payment__c		ParentId			UserOrGroupId		RowCause		AccessLevel
+    
+</apex:page>

@@ -1,0 +1,8 @@
+<apex:page >
+    <apex:sectionHeader title="Employee" subtitle="New Employee" help="/apex/Test_Page" />
+    <apex:pageBlock title="Employee Registration" helpTitle="needHelp" helpUrl="/apex/Test_Page" tabStyle="Lead">
+        Employee Name : <br/><br/>
+        Employee Age  : <br/><br/>
+        Employee Experience: <br/><br/>
+    </apex:pageBlock>
+</apex:page>

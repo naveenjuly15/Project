@@ -1,0 +1,162 @@
+<apex:page >
+    Map : 
+    ----
+    1. It is a key value pair .
+    2. Key should be unique .
+    3. Value canbe duplicate .
+    4. It is easy to retrive the data from the map.
+    5. Size of the map can grow or decrease dynamically based on run time requirement.
+    6. Syntax : 
+     	<!--
+    		Map<Key,Value>()
+			Map<Key,Value>(list<Sobject>) : Where record will be value and record Id will be key
+			Map<Key,Value>(Map)
+		Example : 
+		1. Create a map with Student name as a key and  Student phone as value.
+			Map<String,String> stdMap =new Map<String,String>();
+		2. Create a map with AccountId as key and Account Name as value .
+			Map<Id,String> accMap =new Map<Id,String>();
+		3. Create a map with AccountId as key and Account as value
+			Map<Id,Account> accMap =new Map<Id,Account>();
+		4. Create a Map with AccountId as key and list of contacts as value.
+			Map<Id,List<Contact>> conMap =new Map<Id,List<Contact>>();
+
+		Example 2: 
+		1. Create  map with Employee name as key and salary as value .
+			Map<String,Decimal> empMap =new Map<String,Decimal>();
+
+		2. Create a map with Opportunity name as key and stagename as value .
+			Map<String,String> optyMap =new Map<String,String>();
+
+		3. Create a map with opportunity Id as key and opportunity as valu .
+			Map<Id,Opportunity> optyMap =new Map<Id,Opportunity>();
+
+		4. Create a map with opportunity Id as key  list of opportunityLineItem as value.
+		   Map<Id,List<OpportunityLineItem> > optyLines =new Map<Id,List<OpportunityLineItem>>();
+	
+	Methods : 
+		1. clear() : 
+		   This will remove all the elements from the map.
+			
+		2. size()  : 
+		    This will return no of elements in the map.
+
+		3. isEmpty() : 
+			This will return true ,if the map is empty.
+			This will return false, if the map is not-empty.
+
+		4. put(key,value):
+           a. This will insert a new element in the map.
+		   Example : 
+		   Map<Integer,String> myMap =new Map<Integer,String>();
+		   myMap.put(1,'Sam');
+		   myMap.put(2,'Ram');
+		   myMap.put(3,'Hari');
+		   myMap.put(3,'Kiran');
+		   System.debug(myMap); //  {1 : Sam }{2:ram}{3: Kiran}
+		  
+		 5. get(key) : 
+			This will return the value based on the key..
+			String name =myMap.get(3);
+			System.debug(name); // Kiran
+
+			String a =myMap.get(2);
+			System.debug(a); // Ram
+
+		6. keySet() : 
+		   This will return set of keys from the map. 
+		   Set<Integer> keys =myMap.keySet();
+		   System.debug(keys); // {1,2,3}
+
+		7. values() : 
+		   This will return list of values from the map.
+		   List<String> myData =myMap.values();
+		   System.debug(myData); // Sam,Ram,Kiran
+			
+		8. containsKey(key): 
+		   if the map contains the given key it will return true 
+			
+			Boolean flag1 =myMap.contains(2);
+			System.debug(flag1); // true
+			
+			Boolean flag2 =myMap.contains(5);
+			System.debug(flag2); // false
+			
+		9. removeKey(key) : 
+			This will remove the given key from the map.
+			myMap.removekey(2);
+			
+		10. equals(map) : 
+		    If both the maps are equals it will return true.
+
+		11. putAll(map) : 
+			if you want to add Map to a Map we use putAll
+
+			Map<Integer, String> stdMap =new Map<Integer,String>();
+			stdMap.put(1,'Sam');
+			stdMap.put(2,'Ram');
+			stdMap.put(3,'Kiran');
+
+			Map<Integer,String> empMap =new Map<Integer,String>();
+			empMap.putAll(stdMap);
+
+		12. PutAll(sobject[]) : 
+			 If you are passing a list of sobject records then recordId will be key 
+			 and record should be the value.
+
+			 This concept will work only for those records which are inserted into database.
+
+
+Example 1: 
+a. Create a List of Accounts
+		Name 	Phone 
+		TCS		1111
+		Wipro	2222
+
+b. Create Map with Account Name as key and Phone as value  and insert the elements from the above list 
+
+Code : 
+List<Account> accounts =new List<Account>();
+Account a1=new Account(Name='TCS',Phone='1111');
+Account a2 =new Account(Name='Wipro',Phone='2222');
+accounts.add(a1);
+accounts.add(a2);
+
+Map<String,String>  accMap =new Map<String,String>();
+
+for(Account a : accounts){
+	accMap.put(a.name,a.phone);
+}
+
+Example 2: 
+a. Create List of Accouts :
+		Name	Phone 	Industry 
+		TCS		1111	Energy
+		Wipro	2222	Banking
+	
+b. Create a Map with Account Name as key and Account as value .
+   If Account industry is Banking then put them in the map.
+List<Account> accounts  =new List<Account>();
+Account a1= new Account(Name='TCS',Phone='1111',Industry='Energy');
+Account a2= new Account(Name='Wiprp',Phone='2222',Industry='Banking');
+
+Map<String, Account> accMap =new Map<String,Account>();
+for(Account a : accounts){
+	if(a.industry=='Banking'){
+		accMap.put(a.name,a);
+	}
+}
+
+Example 3: 
+a. Create a List of Opportunity 
+b. If the closeDate is less than TODAY , put them in  a map with 
+   OpportunityId as key and Opportunity as value.
+	
+	Map<Id,Opportunity> optyMap =new Map<Id,Opportunity>();
+	for(Opportunity op:optyMap){
+		if(op.closeDate< System.TODAY()){
+			optyMap.put(op.Id,op);
+		}
+	}
+-->
+</apex:page>

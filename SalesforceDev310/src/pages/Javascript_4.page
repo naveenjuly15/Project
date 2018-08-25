@@ -1,0 +1,14 @@
+<apex:page >
+    <apex:form >
+        <script>
+        	function show(){
+            	alert('This is show method');
+            }
+        	function invoke(){
+            	alert('This is invoke method');
+            }
+        </script>
+         <apex:commandButton value="Submit" onclick="show()" />
+        <apex:commandButton value="Cancel" oncomplete="invoke()" />
+    </apex:form>
+</apex:page>
